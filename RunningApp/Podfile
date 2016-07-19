@@ -1,0 +1,24 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'RunningApp' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for RunningApp
+  pod ‘GoogleMaps’
+  pod ‘GooglePlaces’
+  pod ‘SwiftyJSON’
+  pod ‘Cartography’
+  pod ‘Alamofire’
+  target 'RunningAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'RunningAppUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
