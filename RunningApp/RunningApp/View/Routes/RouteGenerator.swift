@@ -137,8 +137,10 @@ class RouteGenerator {
         
         var coordinates = ""
         for waypoint in waypoints{
-            
-            coordinates += "\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
+            if(waypoint.distance != 0){
+                 coordinates += "\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
+            }
+           
         }
         print("Coordinates")
         print(coordinates)

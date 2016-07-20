@@ -25,7 +25,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
 //          initalizeGoogleMaps()   
-        drawPolyline("endcFjvugVVm@TaBFWMISQk@m@a@y@K_@MaAA[?aDHuu@E}@U{BEmAAwFK_A[}@a@k@_@]WO_@Ma@GkB?CcDBbD}C@s@AGGK??gBCcE?uBmE@qBHaABmKHm@?sAGiFOoEKMMIMAMAg@\\Cz@?b@?f@Ed@Mn@_@v@m@lDkB^WLORc@^sAl@}BHYIXm@|BWx@Sn@U\\_@Vm@Z_CnAWRoAx@e@Lg@DcA?y@B?\\EJCJYVuLO@b@pLH`AF~ABfG^pAB~@BZ@tIKrDG~EAn@A?bADlBDnA?lC^KFGr@@|CAdAAx@DZH`@RRNRP`@j@Z|@DVFjA?pFZjDD|@?jEEb^CdT@|@L`AJ^`@x@\\`@`@\\LHGVU`BWl@")
+        drawPolyline("endcFtougVW[a@y@K_@MaAA}@BeTDc^?kEE}@[kD@oCAaBGkAEW[}@a@k@SQSOa@S[Iy@EeA@CcDBbD}C@s@AGGK??gBCcE?uBgAA{CD}CJcLHc@AqHUoEKMMIMAMAg@x@CbA?f@Ed@MnAy@VS~BoAl@[^WT]Ro@dAwDHYIXm@|B_@rASb@MN_@VmDjBw@l@o@^e@Lg@Dc@?{@?]B?\\EJCJYVuLO@b@pLH`AF~ABfG^rABhAB`@@vNS~EAn@A?bADlBDnA?lC^KFGr@@|CAjB?`@F^LVN^\\`@j@Z|@J~@Bv@A~DDlATzBD|@En^Cf[@ZL`AJ^`@x@VZ")
         
 
         // Do any additional setup after loading the view.
