@@ -30,7 +30,7 @@ extension MapViewController{
             marker.map = self.mapView
             let routeGenerator = RouteGenerator()
             //RouteGenerator.getNearestPlace(marker.position)
-            routeGenerator.generateRoute(marker.position)
+            routeGenerator.generateRoute(marker.position,id:"")
           
         }
        
