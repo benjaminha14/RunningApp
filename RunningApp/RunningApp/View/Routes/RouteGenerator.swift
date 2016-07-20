@@ -81,6 +81,9 @@ class RouteGenerator {
                 
                 waypoints.sortInPlace { $0.distance > $1.distance }
                 var index = waypoints.count-1
+                // Generate random number here
+                var diceRoll = Int(arc4random_uniform(UInt32(waypoints.count-1)) + 1)
+                index = diceRoll
                 var chosenWaypoint:Waypoint?
                 var isChosenWaypoint = true
                 chosenWaypoint = waypoints.last
