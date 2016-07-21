@@ -11,6 +11,7 @@ target 'RunningApp' do
   pod ‘SwiftyJSON’
   pod ‘Cartography’
   pod ‘Alamofire’
+  pod ‘RealmSwift’
   target 'RunningAppTests' do
     inherit! :search_paths
     # Pods for testing

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		307B740971E61040F611CD03 /* Pods_RunningAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E839FC20312BB5F2EAC5A80 /* Pods_RunningAppTests.framework */; };
+		36614BFB1D4146FF0089FBFB /* RouteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36614BFA1D4146FF0089FBFB /* RouteHelper.swift */; };
+		36614BFD1D41472A0089FBFB /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36614BFC1D41472A0089FBFB /* Waypoint.swift */; };
 		36CA83831D36AE5800169B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA83821D36AE5800169B70 /* AppDelegate.swift */; };
 		36CA83851D36AE5800169B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA83841D36AE5800169B70 /* ViewController.swift */; };
 		36CA83881D36AE5800169B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36CA83861D36AE5800169B70 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		36CA83C61D385B0E00169B70 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA83C51D385B0E00169B70 /* RouteViewController.swift */; };
 		36CA83C81D385B8100169B70 /* RouteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36CA83C71D385B8100169B70 /* RouteStoryboard.storyboard */; };
 		36DCD0BD1D40328B000AA1A0 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCD0BC1D40328B000AA1A0 /* Route.swift */; };
+		36DCD0BF1D40359B000AA1A0 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCD0BE1D40359B000AA1A0 /* RealmHelper.swift */; };
 		686CDD62FC06EBBE0167BF57 /* Pods_RunningApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C485FD4DC45862B8D278FB /* Pods_RunningApp.framework */; };
 		880219441CAB09E37008DA60 /* Pods_RunningAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB46B7C62A1DE78DCDB1CA92 /* Pods_RunningAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +49,8 @@
 /* Begin PBXFileReference section */
 		19B1A1EECA99D874F5F86CFA /* Pods-RunningAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningAppUITests/Pods-RunningAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E839FC20312BB5F2EAC5A80 /* Pods_RunningAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36614BFA1D4146FF0089FBFB /* RouteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteHelper.swift; path = Data/RouteHelper.swift; sourceTree = "<group>"; };
+		36614BFC1D41472A0089FBFB /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Waypoint.swift; path = Data/Waypoint.swift; sourceTree = "<group>"; };
 		36CA837F1D36AE5800169B70 /* RunningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CA83821D36AE5800169B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36CA83841D36AE5800169B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		36CA83C51D385B0E00169B70 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteViewController.swift; path = View/Routes/RouteViewController.swift; sourceTree = "<group>"; };
 		36CA83C71D385B8100169B70 /* RouteStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = RouteStoryboard.storyboard; path = View/Routes/RouteStoryboard.storyboard; sourceTree = "<group>"; };
 		36DCD0BC1D40328B000AA1A0 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = Data/Route.swift; sourceTree = "<group>"; };
+		36DCD0BE1D40359B000AA1A0 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmHelper.swift; path = Data/RealmHelper.swift; sourceTree = "<group>"; };
 		5500C595DF0AD5C61DB1FAA7 /* Pods-RunningAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningAppUITests/Pods-RunningAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		78DAD96D872B97D884509893 /* Pods-RunningAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningAppTests/Pods-RunningAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4C485FD4DC45862B8D278FB /* Pods_RunningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +212,8 @@
 				36CA83C11D385AEB00169B70 /* RouteGenerator.swift */,
 				36CA83C71D385B8100169B70 /* RouteStoryboard.storyboard */,
 				36CA83C51D385B0E00169B70 /* RouteViewController.swift */,
+				36614BFA1D4146FF0089FBFB /* RouteHelper.swift */,
+				36614BFC1D41472A0089FBFB /* Waypoint.swift */,
 			);
 			name = Routes;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				36DCD0BC1D40328B000AA1A0 /* Route.swift */,
+				36DCD0BE1D40359B000AA1A0 /* RealmHelper.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -503,7 +512,10 @@
 				36CA83831D36AE5800169B70 /* AppDelegate.swift in Sources */,
 				36CA83C21D385AEB00169B70 /* RouteGenerator.swift in Sources */,
 				36CA83C61D385B0E00169B70 /* RouteViewController.swift in Sources */,
+				36DCD0BF1D40359B000AA1A0 /* RealmHelper.swift in Sources */,
+				36614BFB1D4146FF0089FBFB /* RouteHelper.swift in Sources */,
 				36DCD0BD1D40328B000AA1A0 /* Route.swift in Sources */,
+				36614BFD1D41472A0089FBFB /* Waypoint.swift in Sources */,
 				36CA83BB1D36B5FB00169B70 /* MapViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

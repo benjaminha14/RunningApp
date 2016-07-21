@@ -1,0 +1,22 @@
+//
+//  RouteHelper.swift
+//  RunningApp
+//
+//  Created by Ben Ha on 7/21/16.
+//  Copyright © 2016 Ben Ha. All rights reserved.
+//
+
+import Foundation
+import SwiftyJSON
+class RouteHelper{
+    static func getTotalDistance(json:JSON) -> String {
+        return json["routes"][0]["legs"][0]["distance"]["text"].string!
+        
+    }
+    
+    static func getOverViewPath(json:JSON) -> String{
+        
+        let steps = json["routes"][0]["overview_polyline"]["points"]
+        return steps.string!
+    }
+}

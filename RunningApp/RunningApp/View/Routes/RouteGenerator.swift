@@ -34,8 +34,7 @@ class RouteGenerator {
             print("Final waypoints\(finalWaypoints.count)")
             
             generateDirections(finalWaypoints)
-            print("Final waypoints chosen")
-            print(finalWaypoints)
+          
             
         }
         
@@ -133,6 +132,7 @@ class RouteGenerator {
     }
     
     func generateDirections(waypoints: [Waypoint]){
+        
         print(waypoints)
         let numberOfRoutes = waypoints.count
         print("List of waypoints \(waypoints)")
@@ -145,9 +145,6 @@ class RouteGenerator {
             }
            
         }
-        print("Coordinates")
-        print(coordinates)
-        
         
         let baseURL = "https://maps.googleapis.com/maps/api/directions/json"
         let origin = "\(waypoints[0].coordinate.latitude),\(waypoints[0].coordinate.longitude)"
@@ -156,68 +153,43 @@ class RouteGenerator {
         let mode = "walking"
         let key = "AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
         
-        let url = "\(baseURL)?origin=\(origin)&destination=\(destination)&waypoints=\(waypoints)&key=\(key)"
-        
-        // let url = "https://maps.googleapis.com/maps/api/directions/json?origin=37.442621379972245,-121.90352189273266&destination=37.442621379972245,-121.90352189273266&waypoints=37.446312800000008,-121.89543329999999|via:37.4375122,-121.8956883&key=AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
-        print("THIS IS THE DIRECTIONS URL")
-        print(url)
+        let url = "\(baseURL)?origin=\(origin)&destination=\(destination)&waypoints=\(waypoints)&mode=\(mode)&key=\(key)"
         
         let parameters = [
             "origin" : origin,
             "destination" : destination,
             "waypoints" : waypoints,
+            "mode":mode,
             "key" : key
         ]
-        
-        // let req = Alamofire.request(.GET, baseURL, parameters: parameters, encoding: .URL, headers: nil)
-        // debugPrint(req)
+
         
         Alamofire.request(.GET, baseURL, parameters: parameters, encoding: .URL, headers: nil)
             .responseJSON { response in
                 
-                print("response \(response))")
-                print("URL final \(url)")
-                
-                switch response.result {
+            switch response.result {
                     
                 case .Success:
-                    print("Alamo fire url \(url)")
-                    
                     let json = JSON(response.result.value!)
-                    //   let arrayOfDirections = json["routes"]
-                    print("Directions \(json)")
-                    let legs = json["routes"][0]["legs"][0]
-                    let distanceOfRun = legs["text"]
-                    let steps = legs["steps"]
-                    print("Distance")
-                    print(distanceOfRun)
-                    print("Text directions")
-                    for (var i = 0; i < steps.count; i+=1){
-                        print(steps[i]["html_instructions"])
-                    }
-                    
+                    let route = Route()
+                    route.overViewPath = RouteHelper.getOverViewPath(json)
+                    route.totalDistance = RouteHelper.getTotalDistance(json)
+                    print ("Route")
+                    print(route)
+                    RealmHelper.add(route)
                 case .Failure(let error):
                     print(error)
                     
-                }
+            }
         }
     }
     
-}
-
-struct Waypoint{
-    let coordinate:CLLocationCoordinate2D
-    let distance:Double
-    let id:String
-}
-
-
-extension CLLocationCoordinate2D {
-    
-    init(_ coordinate: Coordinate) {
-        self.latitude = coordinate.latitude
-        self.longitude = coordinate.longitude
-    }
     
 }
+
+
+
+
+
+
 

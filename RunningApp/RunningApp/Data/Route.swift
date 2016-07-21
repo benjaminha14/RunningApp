@@ -7,9 +7,12 @@
 //
 
 import Foundation
-class Route{
-    let overViewPath:String = ""
-    let totalDistance = 0
-    let rootJSONResponse = ""
+import RealmSwift
+import SwiftyJSON
+import Alamofire
+class Route:Object{
+    dynamic var overViewPath:String = ""
+    dynamic var totalDistance = "0 miles"
     
+
 }
