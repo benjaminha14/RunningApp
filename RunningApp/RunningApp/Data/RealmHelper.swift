@@ -9,10 +9,10 @@
 import Foundation
 import RealmSwift
 class RealmHelper{
-    static func retreive() -> Route? {
+    static func retreive() -> Results<Route> {
         let realm = try! Realm()
         let list = realm.objects(Route).sorted("totalDistance", ascending: false)
-        return list.first
+        return list
     }
     
     static func add(route:Route) {

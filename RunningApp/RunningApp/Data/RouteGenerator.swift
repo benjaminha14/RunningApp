@@ -34,7 +34,7 @@ class RouteGenerator {
             print("Final waypoints\(finalWaypoints.count)")
             
             generateDirections(finalWaypoints)
-          
+            
             
         }
         

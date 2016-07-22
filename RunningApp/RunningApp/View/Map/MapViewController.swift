@@ -11,7 +11,7 @@ import MapKit
 import GoogleMaps
 class MapViewController: UIViewController,CLLocationManagerDelegate {
    // var mapView:GMSMapView!
-    
+    var route:Route!
     @IBOutlet weak var mapView: GMSMapView!
     var bump = true
     var currentLocation:CLLocationCoordinate2D?{
@@ -25,7 +25,7 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
   
-        drawPolyline("}ndcFxnugVa@y@K_@MaAA[?aDBeVDo^E}@U{BEmA@_ECw@K_A[}@a@k@_@]WO_@Ma@GkB?CcDBbD}C@s@AGGK??gBCcE?uB?}C?eC?wDO_@?cD?{A@yG@sBBu@Lm@Ro@JYh@{@{@mAKMUK}@KuCAk@GeA[Pw@n@kDjEuTzBeIf@uArAyCj@s@h@k@`@]n@a@~@]^Iz@O`BCjD??w@`AAFC?cCj@?@cCuCC}BUqA_@yDmAwDiAaJiCqAQmAG{GHeAFcAJ}AVuAZc@LP|@Q}@b@MtA[|AWbAKdAGzGIlAFpAPnDdApDbAvDhAxDlApA^|BTtCBlB?hF@?lE@hJE`BMbFTtH@rCB`ZAjCG~AGbC?bBRpGBl@CbHCdD?dD?hCD|ABn@J\\AdCAlIAtH@fGCn@WzD]rEU~CCjEAdI?lD?zBc@Dq@E{H@SZGR?\\W@GDELAl@?pAMKENArCS`@CRBXDRMKQQ")
+        drawPolyline("\(route.overViewPath)")
         
 
         // Do any additional setup after loading the view.
