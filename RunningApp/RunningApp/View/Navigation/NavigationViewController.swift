@@ -12,6 +12,7 @@ import GoogleMaps
 
 class NavigationViewController: UIViewController,CLLocationManagerDelegate,UITableViewDelegate {
     var bump = true
+    var color:UIColor = UIColor.redColor()
     @IBOutlet weak var tableView: UITableView!
     // var mapView:GMSMapView!
     var route:Route!

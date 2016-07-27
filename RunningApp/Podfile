@@ -12,6 +12,7 @@ target 'RunningApp' do
   pod ‘Cartography’
   pod ‘Alamofire’
   pod ‘RealmSwift’
+  pod 'RandomColorSwift'
   target 'RunningAppTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,6 +1,7 @@
 
 import MapKit
 import GoogleMaps
+import RandomColorSwift
 extension NavigationViewController{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        
@@ -39,7 +40,11 @@ extension NavigationViewController{
     func drawPolyline(route:String){
         let path:GMSPath = GMSPath(fromEncodedPath: route)!
         let route = GMSPolyline(path: path)
+        let randomColorForPolyline = randomColor(hue: .Blue, luminosity: .Light)
+        color = randomColorForPolyline
+        route.strokeColor = color
         route.strokeWidth = 2
+       
         route.map = mapView
     }
     
@@ -63,6 +68,7 @@ extension NavigationViewController{
         
         cell.directions.text = route.allDirections[indexPath.row].direction
         cell.number.text = "\(indexPath.row)"
+        cell.number.textColor = color
         
         
         
