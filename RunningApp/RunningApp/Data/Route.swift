@@ -13,6 +13,16 @@ import Alamofire
 class Route:Object{
     dynamic var overViewPath:String = ""
     dynamic var totalDistance = "0 miles"
-    
+    let allPolylined = List<Polyline>()
+    let allDirections = List<Direction>()
 
 }
+
+class Polyline: Object {
+    dynamic var individualPolyLines = ""
+}
+
+class Direction: Object {
+    dynamic var direction = ""
+}
+

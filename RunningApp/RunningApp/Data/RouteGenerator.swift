@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import CoreLocation
 import SwiftyJSON
+import RealmSwift
 
 typealias Coordinate = (latitude: Double, longitude: Double)
 class RouteGenerator {
@@ -17,7 +18,7 @@ class RouteGenerator {
     var finalWaypoints:[Waypoint] = [Waypoint]()
     var bump = true
     //  var firstItteration = true
-    func generateRoute(coordinate: CLLocationCoordinate2D,id:String){
+    func generateRoute(coordinate: CLLocationCoordinate2D,id:String, callBack:()-> Void){
         
         var waypoints = [Waypoint(coordinate: coordinate, distance: 0,id:id)]
         if bump{
@@ -32,7 +33,8 @@ class RouteGenerator {
         }else{
             print("In last section")
             print("Final waypoints\(finalWaypoints.count)")
-            
+            print("Conduct call back")
+            callBack()
             generateDirections(finalWaypoints)
             
             
@@ -121,7 +123,9 @@ class RouteGenerator {
                 self.totalDistance += Int((chosenWaypoint!.distance))
                 print("Chosen waypoint \(chosenWaypoint)")
                 self.finalWaypoints.append(chosenWaypoint!)
-                self.generateRoute((chosenWaypoint!.coordinate,id:chosenWaypoint!.id))
+                self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
+                    print("Still gnerating route")
+                })
                 
                 
             case .Failure(let error):
@@ -141,9 +145,9 @@ class RouteGenerator {
         var coordinates = ""
         for waypoint in waypoints{
             if(waypoint.distance != 0){
-                 coordinates += "\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
+                coordinates += "\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
             }
-           
+            
         }
         
         let baseURL = "https://maps.googleapis.com/maps/api/directions/json"
@@ -162,25 +166,70 @@ class RouteGenerator {
             "mode":mode,
             "key" : key
         ]
-
+        print("Directions URL ")
+        print(url)
+        
         
         Alamofire.request(.GET, baseURL, parameters: parameters, encoding: .URL, headers: nil)
             .responseJSON { response in
                 
-            switch response.result {
+                switch response.result {
                     
                 case .Success:
                     let json = JSON(response.result.value!)
                     let route = Route()
-                    route.overViewPath = RouteHelper.getOverViewPath(json)
-                    route.totalDistance = RouteHelper.getTotalDistance(json)
-                    print ("Route")
-                    print(route)
+                    
                     RealmHelper.add(route)
+                    let realm = try! Realm()
+                    try! realm.write({
+                        
+                        route.overViewPath = RouteHelper.getOverViewPath(json)
+                        route.totalDistance = RouteHelper.getTotalDistance(json)
+                        
+//                        
+//                        let numStepsInFirstHalf = RouteHelper.numberOfStepsInFirstHalf(json)
+//                        for i in 0..<numStepsInFirstHalf{
+//                            let polyline = Polyline()
+//                            polyline.individualPolyLines = RouteHelper.getIndividualPointsFirstHalf(json, index: i)
+//                            
+//                            realm.add(polyline)
+//                            route.allPolylined.append(polyline)
+//                            realm.add(route)
+//                            
+//                            
+//                        }
+//                        
+//                        var numStepsInSecondHalf = RouteHelper.numberOfStepsInSecondHalf(json)
+//                      
+//                        for i in 0..<numStepsInSecondHalf-1{
+//                            let polyline = Polyline()
+//                            polyline.individualPolyLines = RouteHelper.getIndividualPointsSecondHalf(json, index:i)
+//                            realm.add(polyline)
+//                            route.allPolylined.append(polyline)
+//                        }
+                        // Get polylines
+                        let numberOfLegs = RouteHelper.numberOfLegs(json)
+                        for legsIndex in 0..<numberOfLegs{
+                            let numberOfStep = RouteHelper.numberOfSteps(json, index: legsIndex)
+                            for stepIndex in 0..<numberOfStep{
+                                let polyline = Polyline()
+                                polyline.individualPolyLines = RouteHelper.getIndividualPoints(json, index: stepIndex, indexOfLeg: legsIndex)
+                                let direction = Direction()
+                                direction.direction = RouteHelper.getIndividualDirections(json, index: stepIndex, indexOfLeg: legsIndex)
+                                realm.add(polyline)
+                                route.allPolylined.append(polyline)
+                                realm.add(direction)
+                                route.allDirections.append(direction)
+                               
+                            }
+                        }
+                    
+                    })
+            
                 case .Failure(let error):
                     print(error)
                     
-            }
+                }
         }
     }
     

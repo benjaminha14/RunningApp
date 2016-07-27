@@ -1,45 +1,44 @@
 //
-//  MapViewController.swift
+//  NavigationViewController.swift
 //  RunningApp
 //
-//  Created by Ben Ha on 7/13/16.
+//  Created by Ben Ha on 7/26/16.
 //  Copyright © 2016 Ben Ha. All rights reserved.
 //
 
 import UIKit
 import MapKit
 import GoogleMaps
-class MapViewController: UIViewController,CLLocationManagerDelegate {
-   // var mapView:GMSMapView!
-    var route:Route!
-    @IBOutlet weak var mapView: GMSMapView!
+
+class NavigationViewController: UIViewController,CLLocationManagerDelegate,UITableViewDelegate {
     var bump = true
-    var currentLocation:CLLocationCoordinate2D?{
-        didSet{
-            
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
+    // var mapView:GMSMapView!
+    var route:Route!
+    var allPolylines = [String]()
+    @IBOutlet weak var mapView: GMSMapView!
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
         print(route)
-  
-        drawPolyline("\(route.overViewPath)")
         
-
-        // Do any additional setup after loading the view.
+        for line in route.allPolylined{
+            allPolylines.append(line.individualPolyLines)
+        }
+        
+        for polyline in allPolylines{
+            drawPolyline(polyline)
+        }
+  
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func startPressed(sender: AnyObject) {
-       
-    }
-    
-    @IBAction func unwindToMapView(segue: UIStoryboardSegue) {}
-   
 }
+
+
+

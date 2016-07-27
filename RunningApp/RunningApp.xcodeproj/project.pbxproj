@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		307B740971E61040F611CD03 /* Pods_RunningAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E839FC20312BB5F2EAC5A80 /* Pods_RunningAppTests.framework */; };
+		36097D531D4686FD006F314C /* NavgiationCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36097D521D4686FD006F314C /* NavgiationCustomCell.swift */; };
+		36097D551D46870B006F314C /* NavigationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36097D541D46870B006F314C /* NavigationStoryboard.storyboard */; };
+		36097D571D480AC4006F314C /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36097D561D480AC4006F314C /* NavigationViewController.swift */; };
+		36097D591D480B8C006F314C /* NavigationExtensionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36097D581D480B8C006F314C /* NavigationExtensionController.swift */; };
 		36614C011D414ABC0089FBFB /* RouteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36614BFE1D414ABC0089FBFB /* RouteHelper.swift */; };
 		36614C021D414ABC0089FBFB /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36614BFF1D414ABC0089FBFB /* Waypoint.swift */; };
 		36614C031D414ABC0089FBFB /* RouteGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36614C001D414ABC0089FBFB /* RouteGenerator.swift */; };
@@ -52,6 +56,10 @@
 /* Begin PBXFileReference section */
 		19B1A1EECA99D874F5F86CFA /* Pods-RunningAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningAppUITests/Pods-RunningAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E839FC20312BB5F2EAC5A80 /* Pods_RunningAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36097D521D4686FD006F314C /* NavgiationCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavgiationCustomCell.swift; path = View/Navigation/NavgiationCustomCell.swift; sourceTree = "<group>"; };
+		36097D541D46870B006F314C /* NavigationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NavigationStoryboard.storyboard; sourceTree = "<group>"; };
+		36097D561D480AC4006F314C /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationViewController.swift; path = View/Navigation/NavigationViewController.swift; sourceTree = "<group>"; };
+		36097D581D480B8C006F314C /* NavigationExtensionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationExtensionController.swift; path = View/Navigation/NavigationExtensionController.swift; sourceTree = "<group>"; };
 		36614BFE1D414ABC0089FBFB /* RouteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteHelper.swift; path = Data/RouteHelper.swift; sourceTree = "<group>"; };
 		36614BFF1D414ABC0089FBFB /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Waypoint.swift; path = Data/Waypoint.swift; sourceTree = "<group>"; };
 		36614C001D414ABC0089FBFB /* RouteGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteGenerator.swift; path = Data/RouteGenerator.swift; sourceTree = "<group>"; };
@@ -138,6 +146,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		36097D511D4686D0006F314C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				36097D521D4686FD006F314C /* NavgiationCustomCell.swift */,
+				36097D541D46870B006F314C /* NavigationStoryboard.storyboard */,
+				36097D561D480AC4006F314C /* NavigationViewController.swift */,
+				36097D581D480B8C006F314C /* NavigationExtensionController.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
 		36CA83761D36AE5800169B70 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +217,7 @@
 			children = (
 				36CA83BE1D385AB300169B70 /* Routes */,
 				36CA83B31D36B48100169B70 /* Map */,
+				36097D511D4686D0006F314C /* Navigation */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -354,6 +374,7 @@
 				36CA838A1D36AE5800169B70 /* Assets.xcassets in Resources */,
 				36CA83B91D36B4C700169B70 /* MapStoryboard.storyboard in Resources */,
 				36CA83881D36AE5800169B70 /* Main.storyboard in Resources */,
+				36097D551D46870B006F314C /* NavigationStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,13 +540,16 @@
 				36614C071D414C420089FBFB /* RouteHeader.swift in Sources */,
 				36A7AA641D41756B00446E56 /* RouteViewExtension.swift in Sources */,
 				36CA83851D36AE5800169B70 /* ViewController.swift in Sources */,
+				36097D571D480AC4006F314C /* NavigationViewController.swift in Sources */,
 				36CA83B11D36B47400169B70 /* MapViewController.swift in Sources */,
 				36CA83831D36AE5800169B70 /* AppDelegate.swift in Sources */,
 				36614C031D414ABC0089FBFB /* RouteGenerator.swift in Sources */,
+				36097D591D480B8C006F314C /* NavigationExtensionController.swift in Sources */,
 				36614C051D414C2D0089FBFB /* RouteCell.swift in Sources */,
 				36614C011D414ABC0089FBFB /* RouteHelper.swift in Sources */,
 				36614C021D414ABC0089FBFB /* Waypoint.swift in Sources */,
 				36DCD0BF1D40359B000AA1A0 /* RealmHelper.swift in Sources */,
+				36097D531D4686FD006F314C /* NavgiationCustomCell.swift in Sources */,
 				36DCD0BD1D40328B000AA1A0 /* Route.swift in Sources */,
 				36CA83BB1D36B5FB00169B70 /* MapViewExtension.swift in Sources */,
 				36614C0B1D414D2E0089FBFB /* RouteTableViewController.swift in Sources */,

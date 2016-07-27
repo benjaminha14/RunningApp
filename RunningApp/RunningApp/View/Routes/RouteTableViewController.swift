@@ -11,7 +11,11 @@ import RealmSwift
 import MapKit
 import GoogleMaps
 class RouteTableViewController: UITableViewController, CLLocationManagerDelegate {
-    var numberOfRoutesGenerated = 0
+    var numberOfRoutesGenerated = 0{
+        didSet{
+            initRoutes()
+        }
+    }
     var bump = true
     var mapView: GMSMapView!
     var chosenRoute: Route!

@@ -33,37 +33,45 @@ extension RouteTableViewController{
     
     
     func initRoutes(){
-        
-        if bump {
-            bump = false
+        print("Number of routes generated")
+        print(numberOfRoutesGenerated)
+        if(numberOfRoutesGenerated < 4){
             
-            print("Initialized maps")
-            let marker = GMSMarker()
+            if bump {
+                bump = false
+                
+                print("Initialized maps")
+                let marker = GMSMarker()
+                
+                marker.position =  CLLocationCoordinate2D(latitude: currentLocation!.coordinate.latitude, longitude: currentLocation!.coordinate.longitude)
+                
+                marker.title = "Your location"
+                marker.map = self.mapView
+                let routeGenerator = RouteGenerator()
+                routeGenerator.generateRoute(marker.position, id: "", callBack: { () -> Void in
+                    print("Add to numberOfRoutesGenerated")
+                    self.numberOfRoutesGenerated += 1
+                })
+                routes = RealmHelper.retreive()
+            }
             
-            marker.position =  CLLocationCoordinate2D(latitude: currentLocation!.coordinate.latitude, longitude: currentLocation!.coordinate.longitude)
-            
-            marker.title = "Your location"
-            marker.map = self.mapView
-            let routeGenerator = RouteGenerator()
-            routeGenerator.generateRoute(marker.position,id:"")
-            routes = RealmHelper.retreive()
         }
-        bump = true
     }
     
     
     func refreshRoutes(){
+        bump = true
         initRoutes()
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier ==  "toMapView" {
             let mapVC = segue.destinationViewController as! MapViewController
             mapVC.route = chosenRoute
-          
+            
         }
     }
     
@@ -105,7 +113,7 @@ extension RouteTableViewController{
     
     
     
-
+    
     
     
 }

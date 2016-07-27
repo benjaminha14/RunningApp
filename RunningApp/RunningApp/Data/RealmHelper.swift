@@ -30,6 +30,13 @@ class RealmHelper{
         
     }
     
+    static func addPolyline(route:Polyline) {
+        let realm = try! Realm()
+        try! realm.write({
+            realm.add(route)
+        })
+    }
+    
 }
 
 
