@@ -49,7 +49,7 @@ class RouteGenerator {
     func getNearestPlace(coordinate: CLLocationCoordinate2D) {
         let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\("6000")&key=AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\("500")&key=AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
         print("Waypoint url")
         print(url)
         Alamofire.request(.GET, url).validate().responseJSON { response in
@@ -121,6 +121,7 @@ class RouteGenerator {
                 
                 
                 self.totalDistance += Int((chosenWaypoint!.distance))
+                
                 print("Chosen waypoint \(chosenWaypoint)")
                 self.finalWaypoints.append(chosenWaypoint!)
                 self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
@@ -185,29 +186,6 @@ class RouteGenerator {
                         
                         route.overViewPath = RouteHelper.getOverViewPath(json)
                         route.totalDistance = RouteHelper.getTotalDistance(json)
-                        
-//                        
-//                        let numStepsInFirstHalf = RouteHelper.numberOfStepsInFirstHalf(json)
-//                        for i in 0..<numStepsInFirstHalf{
-//                            let polyline = Polyline()
-//                            polyline.individualPolyLines = RouteHelper.getIndividualPointsFirstHalf(json, index: i)
-//                            
-//                            realm.add(polyline)
-//                            route.allPolylined.append(polyline)
-//                            realm.add(route)
-//                            
-//                            
-//                        }
-//                        
-//                        var numStepsInSecondHalf = RouteHelper.numberOfStepsInSecondHalf(json)
-//                      
-//                        for i in 0..<numStepsInSecondHalf-1{
-//                            let polyline = Polyline()
-//                            polyline.individualPolyLines = RouteHelper.getIndividualPointsSecondHalf(json, index:i)
-//                            realm.add(polyline)
-//                            route.allPolylined.append(polyline)
-//                        }
-                        // Get polylines
                         let numberOfLegs = RouteHelper.numberOfLegs(json)
                         for legsIndex in 0..<numberOfLegs{
                             let numberOfStep = RouteHelper.numberOfSteps(json, index: legsIndex)
