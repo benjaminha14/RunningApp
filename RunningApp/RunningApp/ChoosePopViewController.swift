@@ -8,14 +8,25 @@
 
 import UIKit
 import GMStepper
+
+protocol ChoosePopViewDelegate {
+    func minDistanceForPopup(view: ChoosePopViewController) -> Double
+    func didSelectDistance(view: ChoosePopViewController, distance: Double)
+}
+
 class ChoosePopViewController: UIViewController {
 
     @IBOutlet weak var stepper: GMStepper!
     
-
+    var delegate: ChoosePopViewDelegate!
+    var minimumValue:Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stepper.minimumValue = delegate.minDistanceForPopup(self)
+        
+        print(stepper.minimumValue)
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
          stepper.addTarget(self, action: #selector(ChoosePopViewController.stepperValueChanged), forControlEvents: .ValueChanged)
         // Do any additional setup after loading the view.
@@ -31,6 +42,7 @@ class ChoosePopViewController: UIViewController {
     }
     
     @IBAction func closePopUp(sender: AnyObject) {
+        self.delegate.didSelectDistance(self, distance: stepper!.value)
         self.removeAnimate()
         //self.view.removeFromSuperview()
     }

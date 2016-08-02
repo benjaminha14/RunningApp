@@ -20,6 +20,8 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     var secondBump = true
     var mapView: GMSMapView!
     var chosenRoute: Route!
+    var distanceToAimFor:Double!
+    var endLocation:CLLocation!
     var currentLocation:CLLocation?{
         didSet{
             if secondBump{
@@ -41,6 +43,10 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("End Location : \(endLocation)")
+        
+        
         
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshRoutes"), forControlEvents: UIControlEvents.ValueChanged)

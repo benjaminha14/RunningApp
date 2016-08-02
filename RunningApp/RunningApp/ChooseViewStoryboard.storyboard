@@ -26,7 +26,11 @@
                                                 <action selector="chooseDistance:" destination="emz-Om-zbB" id="v3I-eb-IQN"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Generate" id="JoP-5x-CLB"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Generate" id="JoP-5x-CLB">
+                                            <connections>
+                                                <segue destination="SEP-fB-pe1" kind="show" identifier="toRouteStoryboard" id="DIG-OH-cCg"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -55,6 +59,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jna-N6-Vrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150" y="169"/>
+        </scene>
+        <!--RouteStoryboard-->
+        <scene sceneID="AWK-Nu-UtA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RouteStoryboard" id="SEP-fB-pe1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGC-a2-bMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632" y="-218"/>
         </scene>
         <!--Choose Pop View Controller-->
         <scene sceneID="42K-Qu-WPy">

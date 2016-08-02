@@ -9,12 +9,14 @@
 import UIKit
 import GoogleMaps
 import MapKit
-class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestureRecognizerDelegate, GMSMapViewDelegate{
+class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestureRecognizerDelegate, GMSMapViewDelegate, ChoosePopViewDelegate {
     @IBOutlet weak var chooseDistanceButton: UIBarButtonItem!
-    
+    var distanceTravel:Double = 0
+    var minDistance:Double = 0
     var storyBoard:UIStoryboard!
     var chooseViewController: ChoosePopViewController!
     var route:Route!
+    var finalDestination:CLLocation!
     var destinationNotChosen = true
     @IBOutlet weak var mapView: GMSMapView!
     var bump = true
@@ -25,6 +27,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
             
         }
     }
+    
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +38,15 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func chooseDistance(sender: AnyObject) {
         let popOverVC = UIStoryboard(name: "ChooseViewStoryboard", bundle: nil).instantiateViewControllerWithIdentifier("sbPopUpID") as! ChoosePopViewController
+        popOverVC.delegate = self
+        
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)
+        
 
     }
     
@@ -57,6 +58,10 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         print(coordinate)
         
         handleLongPress(coordinate)
+    }
+    
+    func mapView(mapView: GMSMapView, didEndDraggingMarker marker: GMSMarker) {
+         setMinimumDestination(CLLocation(latitude:(currentLocation?.latitude)!, longitude:(currentLocation?.longitude)!), finalLocation: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude))
     }
     
     
@@ -73,18 +78,44 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
             marker.draggable = true
             
             destinationNotChosen = false
+            setMinimumDestination(CLLocation(latitude:(currentLocation?.latitude)!, longitude:(currentLocation?.longitude)!), finalLocation: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
+            
         }
         
     }
     
-   
+    func setMinimumDestination(currentLocation: CLLocation, finalLocation: CLLocation) {
+        var distance = currentLocation.distanceFromLocation(finalLocation)
+        distance = distance * 0.000621371 // Convert to miles
+        distance = Double(round(distance * 10)/10)
+        print(distance)
+        finalDestination = finalLocation
+        minDistance = distance
+    }
     
+    func minDistanceForPopup(view: ChoosePopViewController) -> Double {
+        return minDistance
+    }
     
+    func didSelectDistance(view: ChoosePopViewController, distance: Double) {
+        distanceTravel = distance
+    }
     
-    
-    
-    
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segueIdentifier = segue.identifier{
+            if segueIdentifier == "toRouteStoryboard"{
+                let routeVC = segue.destinationViewController as! RouteTableViewController
+                routeVC.distanceToAimFor = distanceTravel
+                if let finalDestination = finalDestination{
+                     routeVC.endLocation = finalDestination
+                }else{
+                    routeVC.endLocation = CLLocation(latitude: (currentLocation?.latitude)!, longitude: (currentLocation?.latitude)!)
+                }
+               
+            }
+        }
+        
+    }
     
     
 }
