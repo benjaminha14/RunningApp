@@ -5,10 +5,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Choose View Controller-->
+        <!--ChooseViewController-->
         <scene sceneID="hfr-xO-BMg">
             <objects>
-                <viewController id="emz-Om-zbB" customClass="ChooseViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseViewController" title="ChooseViewController" id="emz-Om-zbB" customClass="ChooseViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ukc-xS-2HA"/>
                         <viewControllerLayoutGuide type="bottom" id="pya-iP-jGp"/>
@@ -21,6 +21,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <items>
                                     <navigationItem title="Route Setup" id="X1s-07-5Lv">
+                                        <barButtonItem key="leftBarButtonItem" title="0 miles" id="P3p-d1-QTI">
+                                            <connections>
+                                                <action selector="chooseDistance:" destination="emz-Om-zbB" id="v3I-eb-IQN"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Generate" id="JoP-5x-CLB"/>
                                     </navigationItem>
                                 </items>
@@ -43,12 +48,83 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chooseDistanceButton" destination="P3p-d1-QTI" id="gcl-wi-TIn"/>
                         <outlet property="mapView" destination="FMX-4i-ad1" id="cNF-hD-nhR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jna-N6-Vrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150" y="169"/>
+        </scene>
+        <!--Choose Pop View Controller-->
+        <scene sceneID="42K-Qu-WPy">
+            <objects>
+                <viewController storyboardIdentifier="sbPopUpID" id="HB4-em-x2w" customClass="ChoosePopViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="elw-YT-vlD"/>
+                        <viewControllerLayoutGuide type="bottom" id="9l7-va-qFw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZCT-XU-WI0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEd-66-P3F">
+                                <rect key="frame" x="195" y="179" width="211" height="242"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance to Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-ma-2zI">
+                                        <rect key="frame" x="45" y="47" width="121" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVc-Z7-SyD">
+                                        <rect key="frame" x="85" y="172" width="39" height="30"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePopUp:" destination="HB4-em-x2w" eventType="touchUpInside" id="swW-OV-trv"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oo3-yq-nk9" customClass="GMStepper" customModule="GMStepper">
+                                        <rect key="frame" x="32" y="95" width="146" height="52"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.21568627450980393" green="0.62745098039215685" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="242" id="C5X-8k-OVc"/>
+                                    <constraint firstAttribute="width" constant="211" id="G0e-vP-ve2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PEd-66-P3F" firstAttribute="centerX" secondItem="ZCT-XU-WI0" secondAttribute="centerX" id="2L2-Hb-Vv3"/>
+                            <constraint firstItem="PEd-66-P3F" firstAttribute="centerY" secondItem="ZCT-XU-WI0" secondAttribute="centerY" id="HHT-XS-K3U"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stepper" destination="oo3-yq-nk9" id="l9B-9y-rta"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ym5-XH-8YF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="169"/>
         </scene>
     </scenes>
 </document>

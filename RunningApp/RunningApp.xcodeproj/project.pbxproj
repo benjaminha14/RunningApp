@@ -22,6 +22,7 @@
 		36B79B491D4E56AF009E0581 /* ChooseViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B79B481D4E56AF009E0581 /* ChooseViewStoryboard.storyboard */; };
 		36B79B4B1D4E56C3009E0581 /* ChooseViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B79B4A1D4E56C3009E0581 /* ChooseViewExtension.swift */; };
 		36B79B4D1D4E69CD009E0581 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B79B4C1D4E69CD009E0581 /* ChooseViewController.swift */; };
+		36B79B511D4FF3D2009E0581 /* ChoosePopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B79B501D4FF3D2009E0581 /* ChoosePopViewController.swift */; };
 		36CA83831D36AE5800169B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA83821D36AE5800169B70 /* AppDelegate.swift */; };
 		36CA83851D36AE5800169B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA83841D36AE5800169B70 /* ViewController.swift */; };
 		36CA83881D36AE5800169B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36CA83861D36AE5800169B70 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		36B79B481D4E56AF009E0581 /* ChooseViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChooseViewStoryboard.storyboard; sourceTree = "<group>"; };
 		36B79B4A1D4E56C3009E0581 /* ChooseViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewExtension.swift; sourceTree = "<group>"; };
 		36B79B4C1D4E69CD009E0581 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
+		36B79B501D4FF3D2009E0581 /* ChoosePopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoosePopViewController.swift; sourceTree = "<group>"; };
 		36CA837F1D36AE5800169B70 /* RunningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CA83821D36AE5800169B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36CA83841D36AE5800169B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				36B79B481D4E56AF009E0581 /* ChooseViewStoryboard.storyboard */,
 				36B79B4A1D4E56C3009E0581 /* ChooseViewExtension.swift */,
 				36B79B4C1D4E69CD009E0581 /* ChooseViewController.swift */,
+				36B79B501D4FF3D2009E0581 /* ChoosePopViewController.swift */,
 			);
 			name = ChooseView;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				TargetAttributes = {
 					36CA837E1D36AE5800169B70 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4TEHJ74345;
 					};
 					36CA83921D36AE5800169B70 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -563,6 +567,7 @@
 				36CA83831D36AE5800169B70 /* AppDelegate.swift in Sources */,
 				36B79B4B1D4E56C3009E0581 /* ChooseViewExtension.swift in Sources */,
 				36614C031D414ABC0089FBFB /* RouteGenerator.swift in Sources */,
+				36B79B511D4FF3D2009E0581 /* ChoosePopViewController.swift in Sources */,
 				36097D591D480B8C006F314C /* NavigationExtensionController.swift in Sources */,
 				36614C051D414C2D0089FBFB /* RouteCell.swift in Sources */,
 				36614C011D414ABC0089FBFB /* RouteHelper.swift in Sources */,
@@ -717,6 +722,7 @@
 			baseConfigurationReference = E2FCEC980FE914334EEA1BD6 /* Pods-RunningApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RunningApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -730,6 +736,7 @@
 			baseConfigurationReference = C6D882282C691EC1FAF0441D /* Pods-RunningApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RunningApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
