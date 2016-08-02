@@ -45,6 +45,8 @@ extension RouteTableViewController{
             marker.title = "Your location"
             marker.map = self.mapView
             let routeGenerator = RouteGenerator()
+            routeGenerator.endLocation = endLocation
+            routeGenerator.setDistance = Int(distanceToAimFor/0.000621371)
             routeGenerator.generateRoute(marker.position, id: "", callBack: { () -> Void in
                 print("Add to numberOfRoutesGenerated")
                 self.numberOfRoutesGenerated += 1

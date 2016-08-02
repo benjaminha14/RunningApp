@@ -21,12 +21,7 @@ extension ChooseViewController{
         
     }
     
-   
-    
-    
 
-    
-    
     func getUsersLocationSetup(){
         self.locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled(){

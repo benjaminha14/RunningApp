@@ -13,6 +13,8 @@ import RealmSwift
 
 typealias Coordinate = (latitude: Double, longitude: Double)
 class RouteGenerator {
+    var startLocation:CLLocation!
+    var endLocation:CLLocation!
     var setDistance = 1500
     var totalDistance = 0
     var finalWaypoints:[Waypoint] = [Waypoint]()
@@ -125,7 +127,7 @@ class RouteGenerator {
                 print("Chosen waypoint \(chosenWaypoint)")
                 self.finalWaypoints.append(chosenWaypoint!)
                 self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
-                    print("Still gnerating route")
+                    print("Still genrating route")
                 })
                 
                 
@@ -153,7 +155,7 @@ class RouteGenerator {
         
         let baseURL = "https://maps.googleapis.com/maps/api/directions/json"
         let origin = "\(waypoints[0].coordinate.latitude),\(waypoints[0].coordinate.longitude)"
-        let destination = "\(waypoints[0].coordinate.latitude),\(waypoints[0].coordinate.longitude)"
+        let destination = "\(endLocation.coordinate.latitude),\(endLocation.coordinate.longitude)"
         let waypoints = coordinates
         let mode = "walking"
         let key = "AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
