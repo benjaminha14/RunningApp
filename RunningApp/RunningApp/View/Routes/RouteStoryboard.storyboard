@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Route Table View Controller-->
+        <!--Routes-->
         <scene sceneID="iMF-XE-MJx">
             <objects>
                 <tableViewController id="fQL-Mu-i65" customClass="RouteTableViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,6 +52,8 @@
                             <outlet property="delegate" destination="fQL-Mu-i65" id="P7A-S4-2PN"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Routes" id="Yn0-Fw-bkG"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Gub-cT-uxH" kind="show" identifier="toMapView" id="SOZ-dX-lXM"/>
                     </connections>
