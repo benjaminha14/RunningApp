@@ -69,7 +69,9 @@ extension RouteTableViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier ==  "toMapView" {
             // Find out how to cast value through this navigation controller
-            let mapVC = segue.destinationViewController as! MapViewController
+            let navVC = segue.destinationViewController as! UINavigationController
+            
+            let mapVC = navVC.viewControllers.first as! MapViewController
             mapVC.route = chosenRoute
             
         }

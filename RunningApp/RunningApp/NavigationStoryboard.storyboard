@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="56a-99-VEp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ou4-jr-z7L">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="afV-oS-Rgs">
+            <objects>
+                <navigationController id="ou4-jr-z7L" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ja1-YW-dqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="56a-99-VEp" kind="relationship" relationship="rootViewController" id="oPb-2Q-rCD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nz9-by-9we" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839" y="133"/>
+        </scene>
         <!--Navigation View Controller-->
         <scene sceneID="CgC-Sv-8rM">
             <objects>
@@ -19,11 +35,6 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wk-qD-wND">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <items>
-                                    <navigationItem title="Navigation" id="VKN-av-kcj">
-                                        <barButtonItem key="rightBarButtonItem" title="End" id="c5i-Gb-Wgr"/>
-                                    </navigationItem>
-                                </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-CZ-joF">
                                 <rect key="frame" x="0.0" y="366" width="600" height="234"/>
@@ -100,6 +111,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="aSL-FO-Oq6">
+                        <barButtonItem key="rightBarButtonItem" title="End" id="ahz-iK-Izl"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="tLE-Wr-Rmr" id="eIh-8U-6hz"/>
                         <outlet property="tableView" destination="W2v-CZ-joF" id="2Zy-Rv-i9y"/>
@@ -107,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mt-a2-39n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="215"/>
+            <point key="canvasLocation" x="-37" y="133"/>
         </scene>
     </scenes>
 </document>
