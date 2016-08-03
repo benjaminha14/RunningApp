@@ -21,11 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                 <items>
                                     <navigationItem title="Navigation" id="VKN-av-kcj">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Cx2-Jg-KK5">
-                                            <connections>
-                                                <segue destination="gCY-ho-VB6" kind="unwind" unwindAction="unwindToMapView:" id="Ph0-p9-zAA"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="End" id="c5i-Gb-Wgr"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -37,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUi-s9-XZn" id="IBt-Wb-7Sg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Directions go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLW-wL-OFf">
@@ -110,7 +106,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mt-a2-39n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="gCY-ho-VB6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="268" y="215"/>
         </scene>

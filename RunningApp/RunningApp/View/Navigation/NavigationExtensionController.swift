@@ -5,7 +5,7 @@ import RandomColorSwift
 extension NavigationViewController{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        
-        print("Updating location ")
+     
         guard let location = locations.first else { return }
         
         if bump {
@@ -64,9 +64,7 @@ extension NavigationViewController{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NavigationCell", forIndexPath: indexPath) as! NavigationCustomCell
-        
-        
-        cell.directions.text = route.allDirections[indexPath.row].direction
+        cell.directions.text = route.allDirections[indexPath.row].direction.html2String
         cell.number.text = "\(indexPath.row)"
         cell.number.textColor = color
         
@@ -75,4 +73,22 @@ extension NavigationViewController{
         return cell
     }
 
+}
+
+extension String {
+    
+    var html2AttributedString: NSAttributedString? {
+        guard
+            let data = dataUsingEncoding(NSUTF8StringEncoding)
+            else { return nil }
+        do {
+            return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return  nil
+        }
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
+    }
 }

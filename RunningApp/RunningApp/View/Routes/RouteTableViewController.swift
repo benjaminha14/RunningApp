@@ -13,10 +13,19 @@ import GoogleMaps
 class RouteTableViewController: UITableViewController, CLLocationManagerDelegate {
     var numberOfRoutesGenerated = 0{
         didSet{
-            tableView.reloadData()
+            if(numberOfRoutesGenerated < 3) {
+                initRoutes()
+                tableView.reloadData()
+            }else{
+                generating = false
+                tableView.reloadData()
+            }
+          
         }
     }
     var bump = true
+    var initial = true
+    var generating = true
     var secondBump = true
     var mapView: GMSMapView!
     var chosenRoute: Route!
@@ -24,25 +33,17 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     var endLocation:CLLocation!
     var currentLocation:CLLocation?{
         didSet{
-            if secondBump{
-                for i in 0...3{
-                    initRoutes()
-                }
-                secondBump = false
+            if(initial){
+                initRoutes()
             }
         }
     }
-    var routes: Results<Route>!{
-        didSet{
-            print("Routes")
-            initRoutes()
-            tableView.reloadData()
-        }
-    }
+    var routes: Results<Route>!
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         print("End Location : \(endLocation)")
         

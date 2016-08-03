@@ -36,9 +36,10 @@ class RouteGenerator {
             print("In last section")
             print("Final waypoints\(finalWaypoints.count)")
             print("Conduct call back")
-            callBack()
-            generateDirections(finalWaypoints)
             
+            generateDirections(finalWaypoints)
+            // Why is call back not getting called?
+            callBack()
             
         }
         
@@ -126,7 +127,7 @@ class RouteGenerator {
                 
                 print("Chosen waypoint \(chosenWaypoint)")
                 self.finalWaypoints.append(chosenWaypoint!)
-                self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
+             self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
                     print("Still genrating route")
                 })
                 
@@ -140,10 +141,10 @@ class RouteGenerator {
     
     func generateDirections(waypoints: [Waypoint]){
         
-        print(waypoints)
+        
         let numberOfRoutes = waypoints.count
-        print("List of waypoints \(waypoints)")
-        print(waypoints[0].coordinate.longitude)
+        
+        
         
         var coordinates = ""
         for waypoint in waypoints{
@@ -200,12 +201,12 @@ class RouteGenerator {
                                 route.allPolylined.append(polyline)
                                 realm.add(direction)
                                 route.allDirections.append(direction)
-                               
+                                
                             }
                         }
-                    
+                        
                     })
-            
+                    
                 case .Failure(let error):
                     print(error)
                     

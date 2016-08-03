@@ -10,7 +10,7 @@ import Foundation
 import GoogleMaps
 extension ChooseViewController{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Updating location ")
+       
         currentLocation = locations.last?.coordinate
         guard let location = locations.first else { return }
         // Remove the bump to have the camera focuse on you 

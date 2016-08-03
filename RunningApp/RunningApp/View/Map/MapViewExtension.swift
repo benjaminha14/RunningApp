@@ -13,7 +13,7 @@ import Cartography
 extension MapViewController{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
-        print("Updating location ")
+       
         guard let location = locations.first else { return }
         
         if bump {
@@ -21,15 +21,14 @@ extension MapViewController{
             self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 13, bearing: 0, viewingAngle: 0)
             
             
-            print("Initialized maps")
-            let marker = GMSMarker()
+                    let marker = GMSMarker()
             
             marker.position =  CLLocationCoordinate2D(latitude:location.coordinate.latitude, longitude: location.coordinate.longitude)
             
             marker.title = "Your location"
             marker.map = self.mapView
             let routeGenerator = RouteGenerator()
-            //RouteGenerator.getNearestPlace(marker.position)
+    
            
           
         }

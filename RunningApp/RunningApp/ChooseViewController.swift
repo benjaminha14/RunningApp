@@ -91,8 +91,9 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         print(distance)
         finalDestination = finalLocation
         minDistance = distance
+        distanceTravel = minDistance
     }
-    
+    //MARK: PopViewDelegate
     func minDistanceForPopup(view: ChoosePopViewController) -> Double {
         return minDistance
     }

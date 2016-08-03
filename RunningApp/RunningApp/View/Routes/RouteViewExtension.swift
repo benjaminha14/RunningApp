@@ -13,7 +13,6 @@ import GoogleMaps
 extension RouteTableViewController{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        print("Updating location ")
         guard let location = locations.first else { return }
         currentLocation = location
         locationManager.stopUpdatingLocation()
@@ -34,6 +33,7 @@ extension RouteTableViewController{
     
     func initRoutes(){
         print("Number of routes generated")
+        initial = false
         if bump {
             bump = false
             
@@ -47,9 +47,10 @@ extension RouteTableViewController{
             let routeGenerator = RouteGenerator()
             routeGenerator.endLocation = endLocation
             routeGenerator.setDistance = Int(distanceToAimFor/0.000621371)
-            routeGenerator.generateRoute(marker.position, id: "", callBack: { () -> Void in
+            routeGenerator.generateRoute(marker.position, id: "", callBack: {
                 print("Add to numberOfRoutesGenerated")
                 self.numberOfRoutesGenerated += 1
+                self.bump = true
             })
             routes = RealmHelper.retreive()
         }
