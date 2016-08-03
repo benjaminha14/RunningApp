@@ -36,10 +36,9 @@ class RouteGenerator {
             print("In last section")
             print("Final waypoints\(finalWaypoints.count)")
             print("Conduct call back")
-            
-            generateDirections(finalWaypoints)
-            // Why is call back not getting called?
             callBack()
+            generateDirections(finalWaypoints)
+            
             
         }
         
@@ -52,7 +51,7 @@ class RouteGenerator {
     func getNearestPlace(coordinate: CLLocationCoordinate2D) {
         let currentLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         
-        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\("500")&key=AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
+        let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\(setDistance)&key=AIzaSyA50D7CCsM-QyTbfPwRTM8zwlC1PL6rRGQ"
         print("Waypoint url")
         print(url)
         Alamofire.request(.GET, url).validate().responseJSON { response in
@@ -92,15 +91,19 @@ class RouteGenerator {
                 var isChosenWaypoint = true
                 chosenWaypoint = waypoints.last
                 var sameId = false
+
                 while isChosenWaypoint{
                     if index > 0{
                         if(self.finalWaypoints.count > 0){
                             for finalWaypoint in self.finalWaypoints{
+                                
+                                
                                 if(waypoints[index].id == finalWaypoint.id){
                                     //put something here
                                     sameId = true
                                     
                                 }
+                               
                             }
                         }
                         
@@ -127,8 +130,8 @@ class RouteGenerator {
                 
                 print("Chosen waypoint \(chosenWaypoint)")
                 self.finalWaypoints.append(chosenWaypoint!)
-             self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
-                    print("Still genrating route")
+                self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
+                    print("Still gnerating route")
                 })
                 
                 
@@ -216,7 +219,6 @@ class RouteGenerator {
     
     
 }
-
 
 
 
