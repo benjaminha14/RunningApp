@@ -23,6 +23,10 @@ class NavigationViewController: UIViewController,CLLocationManagerDelegate,UITab
         super.viewDidLoad()
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
+        
+        if RealmHelper.isChosenRoute(){
+            route = RealmHelper.retreive()
+        }
         print(route)
         
         for line in route.allPolylined{
@@ -35,6 +39,10 @@ class NavigationViewController: UIViewController,CLLocationManagerDelegate,UITab
   
     }
     
+    @IBAction func endRun(sender: AnyObject) {
+        RealmHelper.nuke()
+        performSegueWithIdentifier("goToMain", sender: self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

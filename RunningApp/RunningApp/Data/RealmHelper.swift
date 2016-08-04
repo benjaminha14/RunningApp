@@ -9,10 +9,26 @@
 import Foundation
 import RealmSwift
 class RealmHelper{
-    static func retreive() -> Results<Route> {
+    static func retreive() -> Route{
         let realm = try! Realm()
         let list = realm.objects(Route).sorted("totalDistance", ascending: false)
-        return list
+        return list.first!
+    }
+    
+    static func isChosenRoute() -> Bool {
+      do {
+            let realm = try Realm()
+            let route = realm.objects(Route).sorted("totalDistance",ascending: false)
+            if (route.count > 0){
+                return true
+            }
+            
+        }catch{
+            return false
+        }
+        
+        return false
+        
     }
     
     static func add(route:Route) {

@@ -26,11 +26,6 @@
                                                 <action selector="chooseDistance:" destination="emz-Om-zbB" id="v3I-eb-IQN"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Generate" id="JoP-5x-CLB">
-                                            <connections>
-                                                <segue destination="SEP-fB-pe1" kind="show" identifier="toRouteStoryboard" id="DIG-OH-cCg"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

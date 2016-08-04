@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tk7-D3-yEX">
             <objects>
-                <navigationController id="qzw-ev-tSr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Navigation" id="qzw-ev-tSr" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gYm-qq-ghb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -47,7 +47,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Directions go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLW-wL-OFf">
                                                     <rect key="frame" x="64" y="11" width="528" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-Zs-17i">
@@ -56,7 +56,7 @@
                                                         <constraint firstAttribute="width" constant="32" id="NZx-CV-WMY"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -105,16 +105,29 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="4pb-Qu-pvS">
-                        <barButtonItem key="rightBarButtonItem" title="Stop" id="Vfj-Ag-zJc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Stop" id="Vfj-Ag-zJc">
+                            <connections>
+                                <action selector="endRun:" destination="56a-99-VEp" id="rSF-7A-7V5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="tLE-Wr-Rmr" id="eIh-8U-6hz"/>
                         <outlet property="tableView" destination="W2v-CZ-joF" id="2Zy-Rv-i9y"/>
+                        <segue destination="iiI-Rp-ZTa" kind="show" identifier="goToMain" id="bEr-cs-H0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mt-a2-39n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="215"/>
+            <point key="canvasLocation" x="195" y="274"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="pls-nP-gAn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="iiI-Rp-ZTa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XxE-40-GDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="-120"/>
         </scene>
     </scenes>
 </document>

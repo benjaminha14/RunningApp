@@ -58,6 +58,7 @@ extension MapViewController{
             let directionsVC = navController.viewControllers.first as! NavigationViewController
             directionsVC.route = route
             
+            
         }
     }
     

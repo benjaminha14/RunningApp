@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import GoogleMaps
+import RealmSwift
 class MapViewController: UIViewController,CLLocationManagerDelegate {
-   // var mapView:GMSMapView!
+    // var mapView:GMSMapView!
     var route:Route!
     @IBOutlet weak var mapView: GMSMapView!
     var bump = true
@@ -25,21 +26,24 @@ class MapViewController: UIViewController,CLLocationManagerDelegate {
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
         print(route)
-  
+        
         drawPolyline("\(route.overViewPath)")
         
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     @IBAction func startPressed(sender: AnyObject) {
-       
+   
+        RealmHelper.add(route)
+             
+        
     }
     
     @IBAction func unwindToMapView(segue: UIStoryboardSegue) {}
-   
+    
 }
