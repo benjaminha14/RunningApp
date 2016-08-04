@@ -44,6 +44,8 @@ class RouteGenerator {
             callBack()
             generateDirections(finalWaypoints,callBack: {
                 print("Add to numberOfRoutesGenerated")
+                print("Routese ------")
+                print(self.routes)
                 self.delegate?.directionFinishedGenerating()
             })
             
@@ -99,7 +101,7 @@ class RouteGenerator {
                 var isChosenWaypoint = true
                 chosenWaypoint = waypoints.last
                 var sameId = false
-
+                
                 while isChosenWaypoint{
                     if index > 0{
                         if(self.finalWaypoints.count > 0){
@@ -111,7 +113,7 @@ class RouteGenerator {
                                     sameId = true
                                     
                                 }
-                               
+                                
                             }
                         }
                         
@@ -194,37 +196,36 @@ class RouteGenerator {
                 case .Success:
                     let json = JSON(response.result.value!)
                     let route = Route()
-                    
-                    RealmHelper.add(route)
-                    let realm = try! Realm()
-                    try! realm.write({
-                        
-                        route.overViewPath = RouteHelper.getOverViewPath(json)
-                        route.totalDistance = RouteHelper.getTotalDistance(json)
-                        let numberOfLegs = RouteHelper.numberOfLegs(json)
-                        for legsIndex in 0..<numberOfLegs{
-                            let numberOfStep = RouteHelper.numberOfSteps(json, index: legsIndex)
-                            for stepIndex in 0..<numberOfStep{
-                                let polyline = Polyline()
-                                polyline.individualPolyLines = RouteHelper.getIndividualPoints(json, index: stepIndex, indexOfLeg: legsIndex)
-                                let direction = Direction()
-                                direction.direction = RouteHelper.getIndividualDirections(json, index: stepIndex, indexOfLeg: legsIndex)
-                                realm.add(polyline)
-                                route.allPolylined.append(polyline)
-                                realm.add(direction)
-                                route.allDirections.append(direction)
-                                
-                            }
+                    route.overViewPath = RouteHelper.getOverViewPath(json)
+                    route.totalDistance = RouteHelper.getTotalDistance(json)
+                    let numberOfLegs = RouteHelper.numberOfLegs(json)
+                    for legsIndex in 0..<numberOfLegs{
+                        let numberOfStep = RouteHelper.numberOfSteps(json, index: legsIndex)
+                        for stepIndex in 0..<numberOfStep{
+                            let polyline = Polyline()
+                            polyline.individualPolyLines = RouteHelper.getIndividualPoints(json, index: stepIndex, indexOfLeg: legsIndex)
+                            let direction = Direction()
+                            direction.direction = RouteHelper.getIndividualDirections(json, index: stepIndex, indexOfLeg: legsIndex)
+                            
+                            route.allPolylined.append(polyline)
+                            
+                            route.allDirections.append(direction)
+                            
+                            
                         }
-                        
-                    })
+                    }
+                    self.routes.append(route)
+                    
+                    
                     
                 case .Failure(let error):
                     print(error)
                     
                 }
-            }
-        callBack()
+                
+                callBack()
+        }
+        
     }
     
     

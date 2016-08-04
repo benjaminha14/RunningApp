@@ -26,7 +26,7 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
         }
     }
     var routeDelegate: RouteGeneratorDelegate!
-    
+    let routeGenerator = RouteGenerator()
     var bump = true
     var initial = true
     var generating = true
@@ -42,7 +42,7 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
             }
         }
     }
-    var routes: Results<Route>!
+    var routes = [Route]()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {

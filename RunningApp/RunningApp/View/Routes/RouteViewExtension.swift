@@ -43,7 +43,7 @@ extension RouteTableViewController {
             
             marker.title = "Your location"
             marker.map = self.mapView
-            let routeGenerator = RouteGenerator()
+           
             routeGenerator.delegate = self
             routeGenerator.endLocation = endLocation
             routeGenerator.setDistance = Int(distanceToAimFor/0.000621371)
@@ -51,8 +51,9 @@ extension RouteTableViewController {
                 print("Add to numberOfRoutesGenerated")
                 self.numberOfRoutesGenerated += 1
                 self.bump = true
+                self.routes = self.routeGenerator.routes
             })
-            routes = RealmHelper.retreive()
+            
         }
         
         
@@ -92,11 +93,9 @@ extension RouteTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if let routes = routes{
-            return routes.count
-        }else{
-            return 0
-        }
+       
+        return routes.count
+        
         
     }
     
