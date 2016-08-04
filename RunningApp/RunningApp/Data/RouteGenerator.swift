@@ -23,6 +23,7 @@ class RouteGenerator {
     var totalDistance = 0
     var finalWaypoints:[Waypoint] = [Waypoint]()
     var bump = true
+    var routes = [Route]()
     //  var firstItteration = true
     func generateRoute(coordinate: CLLocationCoordinate2D,id:String, callBack:()-> Void){
         
