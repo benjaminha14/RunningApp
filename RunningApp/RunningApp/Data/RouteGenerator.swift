@@ -12,7 +12,11 @@ import SwiftyJSON
 import RealmSwift
 
 typealias Coordinate = (latitude: Double, longitude: Double)
+protocol RouteGeneratorDelegate {
+    func directionFinishedGenerating() -> Void
+}
 class RouteGenerator {
+    var delegate: RouteGeneratorDelegate!
     var startLocation:CLLocation!
     var endLocation:CLLocation!
     var setDistance = 1500
@@ -37,7 +41,10 @@ class RouteGenerator {
             print("Final waypoints\(finalWaypoints.count)")
             print("Conduct call back")
             callBack()
-            generateDirections(finalWaypoints)
+            generateDirections(finalWaypoints,callBack: {
+                print("Add to numberOfRoutesGenerated")
+                self.delegate?.directionFinishedGenerating()
+            })
             
             
         }
@@ -132,6 +139,7 @@ class RouteGenerator {
                 self.finalWaypoints.append(chosenWaypoint!)
                 self.generateRoute(chosenWaypoint!.coordinate,id:chosenWaypoint!.id,callBack: {
                     print("Still gnerating route")
+                    
                 })
                 
                 
@@ -142,7 +150,7 @@ class RouteGenerator {
         }
     }
     
-    func generateDirections(waypoints: [Waypoint]){
+    func generateDirections(waypoints: [Waypoint],callBack:()-> Void){
         
         
         let numberOfRoutes = waypoints.count
@@ -214,7 +222,8 @@ class RouteGenerator {
                     print(error)
                     
                 }
-        }
+            }
+        callBack()
     }
     
     

@@ -10,9 +10,8 @@ import UIKit
 import MapKit
 import GoogleMaps
 
-extension RouteTableViewController{
+extension RouteTableViewController {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         guard let location = locations.first else { return }
         currentLocation = location
         locationManager.stopUpdatingLocation()
@@ -45,6 +44,7 @@ extension RouteTableViewController{
             marker.title = "Your location"
             marker.map = self.mapView
             let routeGenerator = RouteGenerator()
+            routeGenerator.delegate = self
             routeGenerator.endLocation = endLocation
             routeGenerator.setDistance = Int(distanceToAimFor/0.000621371)
             routeGenerator.generateRoute(marker.position, id: "", callBack: {
@@ -60,7 +60,7 @@ extension RouteTableViewController{
     
     
     func refreshRoutes(){
-       
+        
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
@@ -72,6 +72,14 @@ extension RouteTableViewController{
             mapVC.route = chosenRoute
             
         }
+    }
+    
+    func directionFinishedGenerating() -> Void {
+        self.bump = true
+        print("Add to numberOfRoutesGenerated")
+        self.numberOfRoutesGenerated += 1
+      
+        
     }
     
     

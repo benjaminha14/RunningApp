@@ -10,19 +10,22 @@ import UIKit
 import RealmSwift
 import MapKit
 import GoogleMaps
-class RouteTableViewController: UITableViewController, CLLocationManagerDelegate {
+class RouteTableViewController: UITableViewController, CLLocationManagerDelegate, RouteGeneratorDelegate {
     var numberOfRoutesGenerated = 0{
         didSet{
             if(numberOfRoutesGenerated < 3) {
-                initRoutes()
                 tableView.reloadData()
+                initRoutes()
+                
             }else{
                 generating = false
                 tableView.reloadData()
             }
-          
+            
         }
     }
+    var routeDelegate: RouteGeneratorDelegate!
+    
     var bump = true
     var initial = true
     var generating = true
@@ -44,7 +47,6 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         print("End Location : \(endLocation)")
         
         
@@ -52,10 +54,6 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshRoutes"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
-        
-        
-        
-        
         
         
         getUsersLocationSetup()
