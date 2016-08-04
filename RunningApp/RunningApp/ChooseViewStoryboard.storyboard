@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRU-EU-1rD">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                 <items>
                                     <navigationItem title="Route Setup" id="X1s-07-5Lv">
                                         <barButtonItem key="leftBarButtonItem" title="0 miles" id="P3p-d1-QTI">
@@ -35,22 +35,38 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMX-4i-ad1" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="52" width="600" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="540" id="LpV-d4-Eb6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LpV-d4-Eb6"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yRU-EU-1rD" firstAttribute="leading" secondItem="xcg-Ma-XwG" secondAttribute="leading" id="EfZ-9S-QpH"/>
-                            <constraint firstItem="FMX-4i-ad1" firstAttribute="height" secondItem="xcg-Ma-XwG" secondAttribute="height" multiplier="0.9" id="ITV-Cv-qOg"/>
+                            <constraint firstItem="FMX-4i-ad1" firstAttribute="height" secondItem="xcg-Ma-XwG" secondAttribute="height" multiplier="0.85" id="ITV-Cv-qOg"/>
                             <constraint firstItem="FMX-4i-ad1" firstAttribute="leading" secondItem="xcg-Ma-XwG" secondAttribute="leading" id="Ifc-Ee-dF6"/>
                             <constraint firstItem="pya-iP-jGp" firstAttribute="top" secondItem="FMX-4i-ad1" secondAttribute="bottom" id="LnP-lB-A88"/>
                             <constraint firstItem="yRU-EU-1rD" firstAttribute="top" secondItem="xcg-Ma-XwG" secondAttribute="top" id="XFe-5m-ayD"/>
                             <constraint firstAttribute="trailing" secondItem="yRU-EU-1rD" secondAttribute="trailing" id="aSx-zZ-Pe4"/>
                             <constraint firstItem="FMX-4i-ad1" firstAttribute="top" secondItem="yRU-EU-1rD" secondAttribute="bottom" id="pSj-1Y-fle"/>
+                            <constraint firstItem="FMX-4i-ad1" firstAttribute="height" secondItem="xcg-Ma-XwG" secondAttribute="height" multiplier="0.83" constant="1" id="sww-4d-Kb6"/>
                             <constraint firstAttribute="trailing" secondItem="FMX-4i-ad1" secondAttribute="trailing" id="zfC-oM-VFd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ITV-Cv-qOg"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Setup" id="mgQ-Sy-O4u"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chooseDistanceButton" destination="P3p-d1-QTI" id="gcl-wi-TIn"/>
                         <outlet property="mapView" destination="FMX-4i-ad1" id="cNF-hD-nhR"/>

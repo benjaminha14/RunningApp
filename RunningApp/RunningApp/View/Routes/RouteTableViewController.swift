@@ -20,6 +20,7 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
             }else{
                 generating = false
                 tableView.reloadData()
+            
             }
             
         }

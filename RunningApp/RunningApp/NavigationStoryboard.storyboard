@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="56a-99-VEp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qzw-ev-tSr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="tk7-D3-yEX">
+            <objects>
+                <navigationController id="qzw-ev-tSr" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gYm-qq-ghb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="56a-99-VEp" kind="relationship" relationship="rootViewController" id="FGF-pX-oE4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcz-cr-Kc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-547" y="215"/>
+        </scene>
         <!--Navigation View Controller-->
         <scene sceneID="CgC-Sv-8rM">
             <objects>
@@ -17,33 +33,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wk-qD-wND">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <items>
-                                    <navigationItem title="Navigation" id="VKN-av-kcj">
-                                        <barButtonItem key="rightBarButtonItem" title="End" id="c5i-Gb-Wgr"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W2v-CZ-joF">
                                 <rect key="frame" x="0.0" y="366" width="600" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NavigationCell" rowHeight="100" id="hUi-s9-XZn" customClass="NavigationCustomCell" customModule="RunningApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUi-s9-XZn" id="IBt-Wb-7Sg">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Directions go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLW-wL-OFf">
-                                                    <rect key="frame" x="74" y="11" width="518" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Directions go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLW-wL-OFf">
+                                                    <rect key="frame" x="64" y="11" width="528" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-Zs-17i">
-                                                    <rect key="frame" x="52" y="11" width="8" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQ3-Zs-17i">
+                                                    <rect key="frame" x="16" y="11" width="32" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="NZx-CV-WMY"/>
                                                     </constraints>
@@ -83,15 +91,11 @@
                             <constraint firstItem="tLE-Wr-Rmr" firstAttribute="height" secondItem="FBy-6v-6Hk" secondAttribute="height" multiplier="0.5" id="Eq0-dM-QgU"/>
                             <constraint firstItem="W2v-CZ-joF" firstAttribute="top" secondItem="tLE-Wr-Rmr" secondAttribute="bottom" id="IGz-C1-kEB"/>
                             <constraint firstItem="iCB-8f-r5U" firstAttribute="top" secondItem="W2v-CZ-joF" secondAttribute="bottom" id="Ibu-vy-z2g"/>
-                            <constraint firstAttribute="trailing" secondItem="0Wk-qD-wND" secondAttribute="trailing" id="MYn-z0-IaJ"/>
                             <constraint firstItem="tLE-Wr-Rmr" firstAttribute="width" secondItem="FBy-6v-6Hk" secondAttribute="width" id="Swe-DW-OAO"/>
                             <constraint firstItem="W2v-CZ-joF" firstAttribute="height" secondItem="FBy-6v-6Hk" secondAttribute="height" multiplier="0.39" id="XQK-iU-FeV"/>
                             <constraint firstItem="iCB-8f-r5U" firstAttribute="top" secondItem="W2v-CZ-joF" secondAttribute="bottom" id="Y6s-GN-6PW"/>
                             <constraint firstItem="W2v-CZ-joF" firstAttribute="top" secondItem="tLE-Wr-Rmr" secondAttribute="bottom" id="ZHV-1A-s5M"/>
-                            <constraint firstItem="0Wk-qD-wND" firstAttribute="leading" secondItem="FBy-6v-6Hk" secondAttribute="leading" id="a0Q-wP-agd"/>
-                            <constraint firstItem="0Wk-qD-wND" firstAttribute="top" secondItem="FBy-6v-6Hk" secondAttribute="top" id="tJF-Tq-drq"/>
                             <constraint firstItem="tLE-Wr-Rmr" firstAttribute="centerX" secondItem="FBy-6v-6Hk" secondAttribute="centerX" id="uyj-we-0Je"/>
-                            <constraint firstItem="tLE-Wr-Rmr" firstAttribute="top" secondItem="0Wk-qD-wND" secondAttribute="bottom" id="yJK-i5-Aqq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -100,6 +104,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="4pb-Qu-pvS">
+                        <barButtonItem key="rightBarButtonItem" title="Stop" id="Vfj-Ag-zJc"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="tLE-Wr-Rmr" id="eIh-8U-6hz"/>
                         <outlet property="tableView" destination="W2v-CZ-joF" id="2Zy-Rv-i9y"/>

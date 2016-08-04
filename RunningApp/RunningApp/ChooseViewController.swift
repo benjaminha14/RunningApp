@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 import MapKit
-class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestureRecognizerDelegate, GMSMapViewDelegate, ChoosePopViewDelegate {
+class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestureRecognizerDelegate, GMSMapViewDelegate, ChoosePopViewDelegate, UITabBarControllerDelegate {
     @IBOutlet weak var chooseDistanceButton: UIBarButtonItem!
     var distanceTravel:Double = 0
     var minDistance:Double = 0
@@ -33,6 +33,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         super.viewDidLoad()
         mapView.myLocationEnabled = true
         mapView.delegate = self
+        self.tabBarController?.delegate = self
         getUsersLocationSetup()
         
         
@@ -47,7 +48,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         self.view.addSubview(popOverVC.view)
         popOverVC.didMoveToParentViewController(self)
         
-
+        
     }
     
     
@@ -61,7 +62,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
     }
     
     func mapView(mapView: GMSMapView, didEndDraggingMarker marker: GMSMarker) {
-         setMinimumDestination(CLLocation(latitude:(currentLocation?.latitude)!, longitude:(currentLocation?.longitude)!), finalLocation: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude))
+        setMinimumDestination(CLLocation(latitude:(currentLocation?.latitude)!, longitude:(currentLocation?.longitude)!), finalLocation: CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude))
     }
     
     
@@ -108,15 +109,36 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
                 let routeVC = segue.destinationViewController as! RouteTableViewController
                 routeVC.distanceToAimFor = distanceTravel
                 if let finalDestination = finalDestination{
-                     routeVC.endLocation = finalDestination
+                    routeVC.endLocation = finalDestination
                 }else{
                     routeVC.endLocation = CLLocation(latitude: (currentLocation?.latitude)!, longitude: (currentLocation?.latitude)!)
                 }
-               
+                
             }
         }
         
     }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        
+        if viewController is RouteTableViewController{
+            if let finalDestination = finalDestination{
+                
+                let routeVC = viewController as! RouteTableViewController
+                
+                routeVC.endLocation = finalDestination
+                routeVC.distanceToAimFor = distanceTravel
+                return true
+            }
+            
+            return false
+        }
+        
+        return true
+        
+    }
+    
+    
     
     
 }

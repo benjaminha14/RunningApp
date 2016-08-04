@@ -54,8 +54,9 @@ extension MapViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier ==  "toNavigationView" {
-            let navigationVc = segue.destinationViewController as! NavigationViewController
-            navigationVc.route = route
+            let navController = segue.destinationViewController as! UINavigationController
+            let directionsVC = navController.viewControllers.first as! NavigationViewController
+            directionsVC.route = route
             
         }
     }

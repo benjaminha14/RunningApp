@@ -70,6 +70,11 @@ class ChoosePopViewController: UIViewController {
         });
     }
     
+    
+    
+    
+    
+    
 
     
 

@@ -68,7 +68,8 @@ extension RouteTableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier ==  "toMapView" {
-            let mapVC = segue.destinationViewController as! MapViewController
+            let navVC = segue.destinationViewController as! UINavigationController
+            let mapVC = navVC.viewControllers.first as! MapViewController
             mapVC.route = chosenRoute
             
         }
