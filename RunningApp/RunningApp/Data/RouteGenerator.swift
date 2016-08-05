@@ -24,6 +24,7 @@ class RouteGenerator {
     var finalWaypoints:[Waypoint] = [Waypoint]()
     var bump = true
     var routes = [Route]()
+    var finalRoute:Route!
     //  var firstItteration = true
     func generateRoute(coordinate: CLLocationCoordinate2D,id:String, callBack:()-> Void){
         
@@ -95,7 +96,7 @@ class RouteGenerator {
                 waypoints.sortInPlace { $0.distance > $1.distance }
                 var index = waypoints.count-1
                 // Generate random number here
-                var diceRoll = Int(arc4random_uniform(UInt32(waypoints.count-1)) + 1)
+                let diceRoll = Int(arc4random_uniform(UInt32(waypoints.count-1)) + 1)
                 index = diceRoll
                 var chosenWaypoint:Waypoint?
                 var isChosenWaypoint = true
@@ -214,6 +215,7 @@ class RouteGenerator {
                             
                         }
                     }
+                    self.finalRoute = route
                     self.routes.append(route)
                     
                     

@@ -43,15 +43,15 @@ extension RouteTableViewController {
             
             marker.title = "Your location"
             marker.map = self.mapView
-           
             routeGenerator.delegate = self
             routeGenerator.endLocation = endLocation
             routeGenerator.setDistance = Int(distanceToAimFor/0.000621371)
             routeGenerator.generateRoute(marker.position, id: "", callBack: {
+                
                 print("Add to numberOfRoutesGenerated")
-                self.numberOfRoutesGenerated += 1
-                self.bump = true
-                self.routes = self.routeGenerator.routes
+                
+                
+                
             })
             
         }
@@ -73,15 +73,38 @@ extension RouteTableViewController {
             let mapVC = navVC.viewControllers.first as! MapViewController
             mapVC.route = chosenRoute
             
-                       
+            
         }
     }
     
     func directionFinishedGenerating() -> Void {
         self.bump = true
+//        routeGenerator.bump = true
+//        routeGenerator.finalWaypoints.removeAll()
+//        routeGenerator.routes.removeAll()
         print("Add to numberOfRoutesGenerated")
+        
+        
+        var sameRoute = false
+        if(routes.count >= 1) {
+            for route in self.routes{
+                if route == self.routeGenerator.finalRoute{
+                    sameRoute = true
+                }
+            }
+        }else{
+            self.routes.append(self.routeGenerator.finalRoute)
+            routeGenerator = RouteGenerator()
+            self.numberOfRoutesGenerated += 1
+            return
+        }
+        if sameRoute != true{
+            self.routes.append(self.routeGenerator.finalRoute)
+           
+        }
+        routeGenerator = RouteGenerator()
         self.numberOfRoutesGenerated += 1
-      
+        
         
     }
     
@@ -94,7 +117,7 @@ extension RouteTableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-       
+        
         return routes.count
         
         

@@ -13,9 +13,10 @@ import GoogleMaps
 class RouteTableViewController: UITableViewController, CLLocationManagerDelegate, RouteGeneratorDelegate {
     var numberOfRoutesGenerated = 0{
         didSet{
-            if(numberOfRoutesGenerated < 3) {
+            if(routes.count < 3) {
                 tableView.reloadData()
                 initRoutes()
+                
                 
             }else{
                 generating = false
@@ -26,7 +27,7 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
         }
     }
     var routeDelegate: RouteGeneratorDelegate!
-    let routeGenerator = RouteGenerator()
+    var routeGenerator = RouteGenerator()
     var bump = true
     var initial = true
     var generating = true
