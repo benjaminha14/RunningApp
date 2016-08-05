@@ -164,7 +164,7 @@ class RouteGenerator {
         var coordinates = ""
         for waypoint in waypoints{
             if(waypoint.distance != 0){
-                coordinates += "\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
+                coordinates += "via:\(waypoint.coordinate.latitude),\(waypoint.coordinate.longitude)|"
             }
             
         }
