@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-547" y="215"/>
         </scene>
-        <!--Navigation View Controller-->
+        <!--Navigation-->
         <scene sceneID="CgC-Sv-8rM">
             <objects>
                 <viewController id="56a-99-VEp" customClass="NavigationViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                                         <rect key="frame" x="0.0" y="92" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUi-s9-XZn" id="IBt-Wb-7Sg">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Directions go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLW-wL-OFf">
@@ -79,8 +79,8 @@
                                     <outlet property="delegate" destination="56a-99-VEp" id="Qkc-K6-gFT"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLE-Wr-Rmr" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="66" width="600" height="300"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLE-Wr-Rmr" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="300"/>
                                 <color key="backgroundColor" red="0.81960784310000001" green="0.20392156859999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -95,17 +95,20 @@
                             <constraint firstItem="W2v-CZ-joF" firstAttribute="height" secondItem="FBy-6v-6Hk" secondAttribute="height" multiplier="0.39" id="XQK-iU-FeV"/>
                             <constraint firstItem="iCB-8f-r5U" firstAttribute="top" secondItem="W2v-CZ-joF" secondAttribute="bottom" id="Y6s-GN-6PW"/>
                             <constraint firstItem="W2v-CZ-joF" firstAttribute="top" secondItem="tLE-Wr-Rmr" secondAttribute="bottom" id="ZHV-1A-s5M"/>
+                            <constraint firstItem="tLE-Wr-Rmr" firstAttribute="top" secondItem="BVZ-CG-jkY" secondAttribute="bottom" id="bRs-dz-5IT"/>
                             <constraint firstItem="tLE-Wr-Rmr" firstAttribute="centerX" secondItem="FBy-6v-6Hk" secondAttribute="centerX" id="uyj-we-0Je"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Eq0-dM-QgU"/>
                                 <exclude reference="IGz-C1-kEB"/>
                                 <exclude reference="Y6s-GN-6PW"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="4pb-Qu-pvS">
+                    <navigationItem key="navigationItem" title="Navigation" id="4pb-Qu-pvS">
                         <barButtonItem key="rightBarButtonItem" title="Stop" id="Vfj-Ag-zJc">
+                            <color key="tintColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="endRun:" destination="56a-99-VEp" id="rSF-7A-7V5"/>
                             </connections>
@@ -121,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="195" y="274"/>
         </scene>
-        <!--Main-->
+        <!--ChooseViewStoryboard-->
         <scene sceneID="pls-nP-gAn">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="iiI-Rp-ZTa" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ChooseViewStoryboard" id="iiI-Rp-ZTa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XxE-40-GDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="618" y="-120"/>

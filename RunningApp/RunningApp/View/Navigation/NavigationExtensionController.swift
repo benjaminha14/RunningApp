@@ -20,6 +20,9 @@ extension NavigationViewController{
             
             marker.title = "Your location"
             marker.map = self.mapView
+            mapView.settings.myLocationButton = true
+            mapView.settings.compassButton = true
+            
        
             
             

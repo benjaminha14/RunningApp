@@ -16,4 +16,17 @@ class RouteCell: UITableViewCell {
     }
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var keyLocations: UILabel!
+    
+    override var frame: CGRect{
+        get{
+            return super.frame
+        }
+        
+        set(newFrame){
+            var frame = newFrame
+            frame.origin.x += 20
+            
+            super.frame = frame
+        }
+    }
 }

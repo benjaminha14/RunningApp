@@ -17,6 +17,7 @@ extension ChooseViewController{
         if bump {
             bump = false
             self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 13, bearing: 0, viewingAngle: 0)
+           
         }
         
     }

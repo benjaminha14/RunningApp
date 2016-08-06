@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fQL-Mu-i65">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lY6-Cj-XlC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--ChooseViewStoryboard-->
+        <scene sceneID="WFX-bW-3Fu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChooseViewStoryboard" id="Q62-Tq-qcw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sRr-vl-rwL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.5" y="-354"/>
+        </scene>
         <!--Routes-->
         <scene sceneID="iMF-XE-MJx">
             <objects>
@@ -14,7 +22,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RouteCell" rowHeight="87" id="ePs-r3-Oca" customClass="RouteCell" customModule="RunningApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="87"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ePs-r3-Oca" id="fNv-y4-s38">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="86.5"/>
@@ -26,24 +34,10 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Keylocations: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzW-rF-2Kb">
-                                            <rect key="frame" x="140" y="33" width="246" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-ut-3aj">
-                                            <rect key="frame" x="526" y="29" width="55" height="30"/>
-                                            <state key="normal" title="Favorite"/>
-                                            <connections>
-                                                <action selector="favoriteButton:" destination="ePs-r3-Oca" eventType="touchUpInside" id="MBo-qc-p2V"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="distance" destination="cyf-Bm-dR0" id="3y1-t7-VQu"/>
-                                    <outlet property="keyLocations" destination="BzW-rF-2Kb" id="N8L-jp-ezW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -52,7 +46,15 @@
                             <outlet property="delegate" destination="fQL-Mu-i65" id="P7A-S4-2PN"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Routes" id="FNC-bd-UVg"/>
+                    <navigationItem key="navigationItem" title="Routes" id="QX2-sU-Gxm">
+                        <barButtonItem key="leftBarButtonItem" title="Setup" id="VWP-Zm-gz9">
+                            <color key="tintColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="setupTransition:" destination="fQL-Mu-i65" id="0fj-U7-HbH"/>
+                                <segue destination="Q62-Tq-qcw" kind="show" id="Kqi-G1-N2H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Gub-cT-uxH" kind="show" identifier="toMapView" id="SOZ-dX-lXM"/>
@@ -60,7 +62,23 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izq-MI-LZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="192"/>
+            <point key="canvasLocation" x="472" y="94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Znw-ih-f8x">
+            <objects>
+                <navigationController id="lY6-Cj-XlC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vqs-Ev-4VI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fQL-Mu-i65" kind="relationship" relationship="rootViewController" id="xoL-yA-C64"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QbX-i9-qg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-243" y="140"/>
         </scene>
         <!--MapStoryboard-->
         <scene sceneID="HB5-6g-asK">

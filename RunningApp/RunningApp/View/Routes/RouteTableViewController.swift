@@ -48,22 +48,26 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+
         
-        print("End Location : \(endLocation)")
+    }
+    @IBAction func setupTransition(sender: AnyObject) {
+        //routes.removeAll()
         
-        
-        
+    }
+    override func viewWillAppear(animated: Bool) {
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("refreshRoutes"), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
-        
-        
         getUsersLocationSetup()
         mapView = GMSMapView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         self.view.addSubview(mapView)
         mapView.myLocationEnabled = true
         
+        print("Route view load")
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

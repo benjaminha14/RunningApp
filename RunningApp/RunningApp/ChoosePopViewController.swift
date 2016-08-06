@@ -25,10 +25,11 @@ class ChoosePopViewController: UIViewController {
         super.viewDidLoad()
         
         stepper.minimumValue = delegate.minDistanceForPopup(self)
-        
+        stepper.maximumValue = 10000000
+    
         print(stepper.minimumValue)
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
-         stepper.addTarget(self, action: #selector(ChoosePopViewController.stepperValueChanged), forControlEvents: .ValueChanged)
+        stepper.addTarget(self, action: #selector(ChoosePopViewController.stepperValueChanged), forControlEvents: .ValueChanged)
         // Do any additional setup after loading the view.
     }
     

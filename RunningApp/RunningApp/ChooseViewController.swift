@@ -28,11 +28,19 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         }
     }
     
+    @IBAction func generateRoute(sender: AnyObject) {
+        
+        if let finalDestination = finalDestination{
+            performSegueWithIdentifier("goToRoute", sender: self)
+        }
+    }
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.myLocationEnabled = true
         mapView.delegate = self
+        mapView.settings.myLocationButton = true
+        mapView.settings.compassButton = true
         self.tabBarController?.delegate = self
         getUsersLocationSetup()
         
@@ -93,6 +101,8 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         finalDestination = finalLocation
         minDistance = distance
         distanceTravel = minDistance
+        chooseDistanceButton.title = "\(distanceTravel) miles"
+
     }
     //MARK: PopViewDelegate
     func minDistanceForPopup(view: ChoosePopViewController) -> Double {
@@ -101,20 +111,17 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
     
     func didSelectDistance(view: ChoosePopViewController, distance: Double) {
         distanceTravel = distance
+        chooseDistanceButton.title = "\(distanceTravel) miles"
+
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segueIdentifier = segue.identifier{
-            if segueIdentifier == "toRouteStoryboard"{
-                let routeVC = segue.destinationViewController as! RouteTableViewController
-                routeVC.distanceToAimFor = distanceTravel
-                if let finalDestination = finalDestination{
-                    routeVC.endLocation = finalDestination
-                }else{
-                    routeVC.endLocation = CLLocation(latitude: (currentLocation?.latitude)!, longitude: (currentLocation?.latitude)!)
-                }
-                
-            }
+        let navVC = segue.destinationViewController as! UINavigationController
+        let routeVC = navVC.viewControllers.first as! RouteTableViewController
+        routeVC.distanceToAimFor = distanceTravel
+        if let finalDestination = finalDestination{
+            routeVC.endLocation = finalDestination
         }
         
     }

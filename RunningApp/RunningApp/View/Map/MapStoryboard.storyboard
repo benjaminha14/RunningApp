@@ -21,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-405" y="296"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Overview-->
         <scene sceneID="7bh-2j-tlt">
             <objects>
                 <viewController id="Ugj-EA-dHH" customClass="MapViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SR2-Gc-WBw" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="90" width="600" height="510"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -44,15 +44,23 @@
                             <constraint firstItem="Gdj-Cd-Mw8" firstAttribute="top" secondItem="SR2-Gc-WBw" secondAttribute="bottom" id="39H-dx-ybq"/>
                             <constraint firstItem="SR2-Gc-WBw" firstAttribute="leading" secondItem="FcX-os-g4R" secondAttribute="leading" id="AW3-KT-TNT"/>
                             <constraint firstItem="SR2-Gc-WBw" firstAttribute="centerX" secondItem="FcX-os-g4R" secondAttribute="centerX" id="Qxf-ZM-Dgq"/>
+                            <constraint firstItem="SR2-Gc-WBw" firstAttribute="top" secondItem="9zD-fu-Ras" secondAttribute="bottom" id="gtV-ss-6OI"/>
                             <constraint firstAttribute="trailing" secondItem="SR2-Gc-WBw" secondAttribute="trailing" id="ldN-iu-11b"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1Ic-go-bub"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="HI8-wJ-RF8">
+                    <navigationItem key="navigationItem" title="Overview" id="HI8-wJ-RF8">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="3bL-Vr-kcm">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xIg-1a-TaG">
                                 <rect key="frame" x="20" y="7" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="8zO-sm-xHa" kind="unwind" unwindAction="unwindToRoutes:" id="4g7-Ig-bma"/>
                                 </connections>
@@ -62,12 +70,15 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ne0-8O-gSi">
                                 <rect key="frame" x="546" y="7" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="startPressed:" destination="Ugj-EA-dHH" eventType="touchUpInside" id="e6N-ZT-iuB"/>
                                     <segue destination="quG-Ul-8sW" kind="show" identifier="toNavigationView" id="J1D-vL-T86"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -85,7 +96,7 @@
                 <viewControllerPlaceholder storyboardName="NavigationStoryboard" id="quG-Ul-8sW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4t-h2-Tlo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="981.5" y="99"/>
+            <point key="canvasLocation" x="1045.5" y="128"/>
         </scene>
     </scenes>
 </document>

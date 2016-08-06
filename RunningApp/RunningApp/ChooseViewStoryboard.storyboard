@@ -1,75 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="emz-Om-zbB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UeT-nj-WlF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--ChooseViewController-->
-        <scene sceneID="hfr-xO-BMg">
+        <!--Navigation Controller-->
+        <scene sceneID="Vk7-PD-KEK">
             <objects>
-                <viewController storyboardIdentifier="ChooseViewController" title="ChooseViewController" id="emz-Om-zbB" customClass="ChooseViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ukc-xS-2HA"/>
-                        <viewControllerLayoutGuide type="bottom" id="pya-iP-jGp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xcg-Ma-XwG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRU-EU-1rD">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
-                                <items>
-                                    <navigationItem title="Route Setup" id="X1s-07-5Lv">
-                                        <barButtonItem key="leftBarButtonItem" title="0 miles" id="P3p-d1-QTI">
-                                            <connections>
-                                                <action selector="chooseDistance:" destination="emz-Om-zbB" id="v3I-eb-IQN"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMX-4i-ad1" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="52" width="600" height="499"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="540" id="LpV-d4-Eb6"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="LpV-d4-Eb6"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="yRU-EU-1rD" firstAttribute="leading" secondItem="xcg-Ma-XwG" secondAttribute="leading" id="EfZ-9S-QpH"/>
-                            <constraint firstItem="FMX-4i-ad1" firstAttribute="height" secondItem="xcg-Ma-XwG" secondAttribute="height" multiplier="0.85" id="ITV-Cv-qOg"/>
-                            <constraint firstItem="FMX-4i-ad1" firstAttribute="leading" secondItem="xcg-Ma-XwG" secondAttribute="leading" id="Ifc-Ee-dF6"/>
-                            <constraint firstItem="pya-iP-jGp" firstAttribute="top" secondItem="FMX-4i-ad1" secondAttribute="bottom" id="LnP-lB-A88"/>
-                            <constraint firstItem="yRU-EU-1rD" firstAttribute="top" secondItem="xcg-Ma-XwG" secondAttribute="top" id="XFe-5m-ayD"/>
-                            <constraint firstAttribute="trailing" secondItem="yRU-EU-1rD" secondAttribute="trailing" id="aSx-zZ-Pe4"/>
-                            <constraint firstItem="FMX-4i-ad1" firstAttribute="top" secondItem="yRU-EU-1rD" secondAttribute="bottom" id="pSj-1Y-fle"/>
-                            <constraint firstItem="FMX-4i-ad1" firstAttribute="height" secondItem="xcg-Ma-XwG" secondAttribute="height" multiplier="0.83" constant="1" id="sww-4d-Kb6"/>
-                            <constraint firstAttribute="trailing" secondItem="FMX-4i-ad1" secondAttribute="trailing" id="zfC-oM-VFd"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ITV-Cv-qOg"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Setup" id="mgQ-Sy-O4u"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                <navigationController id="UeT-nj-WlF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wQX-dk-5p1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
                     <connections>
-                        <outlet property="chooseDistanceButton" destination="P3p-d1-QTI" id="gcl-wi-TIn"/>
-                        <outlet property="mapView" destination="FMX-4i-ad1" id="cNF-hD-nhR"/>
+                        <segue destination="68B-JH-DRZ" kind="relationship" relationship="rootViewController" id="i27-F0-qDE"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jna-N6-Vrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7gi-gQ-DVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="150" y="169"/>
+            <point key="canvasLocation" x="80" y="-175"/>
         </scene>
         <!--RouteStoryboard-->
         <scene sceneID="AWK-Nu-UtA">
@@ -77,7 +27,64 @@
                 <viewControllerPlaceholder storyboardName="RouteStoryboard" id="SEP-fB-pe1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGC-a2-bMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="-218"/>
+            <point key="canvasLocation" x="940" y="-793"/>
+        </scene>
+        <!--Setup-->
+        <scene sceneID="GNb-x0-4FL">
+            <objects>
+                <viewController id="68B-JH-DRZ" customClass="ChooseViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XvU-Dk-fKm"/>
+                        <viewControllerLayoutGuide type="bottom" id="vN5-yb-Yig"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jf6-Lr-0QG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rh0-6W-mog" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rh0-6W-mog" firstAttribute="centerX" secondItem="jf6-Lr-0QG" secondAttribute="centerX" id="4dq-Ie-61r"/>
+                            <constraint firstItem="rh0-6W-mog" firstAttribute="top" secondItem="XvU-Dk-fKm" secondAttribute="bottom" id="AhG-DN-NOh"/>
+                            <constraint firstItem="rh0-6W-mog" firstAttribute="leading" secondItem="jf6-Lr-0QG" secondAttribute="leading" id="BHy-XO-jKu"/>
+                            <constraint firstItem="vN5-yb-Yig" firstAttribute="top" secondItem="rh0-6W-mog" secondAttribute="bottom" id="TC4-1J-tcI"/>
+                            <constraint firstAttribute="trailing" secondItem="rh0-6W-mog" secondAttribute="trailing" id="e5o-Fn-4Zm"/>
+                            <constraint firstItem="rh0-6W-mog" firstAttribute="height" secondItem="jf6-Lr-0QG" secondAttribute="height" multiplier="0.8" id="jPF-OY-bmK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4dq-Ie-61r"/>
+                                <exclude reference="jPF-OY-bmK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setup" id="Tfh-7H-zvw">
+                        <barButtonItem key="leftBarButtonItem" title="0 Miles" id="fWl-BV-OZp">
+                            <color key="tintColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="chooseDistance:" destination="68B-JH-DRZ" id="X3G-d4-Gpr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Generate" id="Pxh-2N-MFt">
+                            <color key="tintColor" red="1" green="1" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="generateRoute:" destination="68B-JH-DRZ" id="CNZ-IO-U19"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chooseDistanceButton" destination="fWl-BV-OZp" id="wxO-Cr-LNX"/>
+                        <outlet property="mapView" destination="rh0-6W-mog" id="a3G-vs-Lbh"/>
+                        <segue destination="SEP-fB-pe1" kind="show" identifier="goToRoute" id="hCE-ii-f5H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqV-NP-D2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="-316"/>
         </scene>
         <!--Choose Pop View Controller-->
         <scene sceneID="42K-Qu-WPy">
@@ -123,7 +130,7 @@
                                                 <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="stepValue">
-                                                <real key="value" value="0.5"/>
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
@@ -147,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ym5-XH-8YF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="169"/>
+            <point key="canvasLocation" x="1428" y="-185"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -28,9 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         }
+
+        UINavigationBar.appearance().backgroundColor = UIColor(red: UIColor.getValue(29.0), green: UIColor.getValue(53.0), blue: UIColor.getValue(87.0), alpha: 1.0)
+         UINavigationBar.appearance().barTintColor = UIColor(red: UIColor.getValue(29.0), green: UIColor.getValue(53.0), blue: UIColor.getValue(87.0), alpha: 1.0)
+         UINavigationBar.appearance().alpha = 1.0
+       
+        UINavigationBar.appearance().opaque = false
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         return true
     }
-
+    
+   
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -63,5 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension UIColor {
+    static func getValue(value:Double ) -> CGFloat{
+        return CGFloat(value/255.0)
+    }
 }
 
