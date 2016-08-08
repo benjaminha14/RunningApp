@@ -21,7 +21,7 @@ extension MapViewController{
             self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 13, bearing: 0, viewingAngle: 0)
             
             
-                    let marker = GMSMarker()
+            let marker = GMSMarker()
             
             marker.position =  CLLocationCoordinate2D(latitude:location.coordinate.latitude, longitude: location.coordinate.longitude)
             

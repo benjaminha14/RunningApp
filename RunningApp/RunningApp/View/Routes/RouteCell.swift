@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import GoogleMaps
+class RouteCell: UITableViewCell,CLLocationManagerDelegate {
 
-class RouteCell: UITableViewCell {
 
-    @IBAction func favoriteButton(sender: AnyObject) {
-        
-        
-    }
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var keyLocations: UILabel!
     
-    override var frame: CGRect{
+    @IBOutlet weak var map: UIView!
+   
+    var mapview:GMSMapView!
+    
+    override var frame: CGRect {
         get{
             return super.frame
         }
@@ -26,6 +27,7 @@ class RouteCell: UITableViewCell {
             var frame = newFrame
             frame.origin.x += 20
             
+            frame.size.width -= 2 * 20
             super.frame = frame
         }
     }

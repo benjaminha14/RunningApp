@@ -14,6 +14,7 @@ extension RouteTableViewController {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         currentLocation = location
+        self.location = location
         locationManager.stopUpdatingLocation()
         
         
@@ -108,6 +109,12 @@ extension RouteTableViewController {
         
     }
     
+    func drawPolyline(route:String){
+        let path:GMSPath = GMSPath(fromEncodedPath: route)!
+        let route = GMSPolyline(path: path)
+        route.map = mapView
+    }
+    
     
     
     
@@ -128,9 +135,30 @@ extension RouteTableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath: indexPath) as! RouteCell
         let route = routes[indexPath.row]
         
+        let camera = GMSCameraPosition.cameraWithLatitude(location.coordinate.latitude,
+                                                          longitude: location.coordinate.longitude, zoom: 12)
+        var frame = CGRectZero
+        frame.size.width = cell.map.frame.size.width
+        frame.size.height = cell.map.frame.size.height
+        cell.mapview = GMSMapView.mapWithFrame(frame, camera: camera)
+        
+        cell.mapview.delegate = self
+        cell.mapview.myLocationEnabled = true
+        let path:GMSPath = GMSPath(fromEncodedPath: route.overViewPath)!
+        let route2 = GMSPolyline(path: path)
+        route2.map = cell.mapview
+       // cell.map.backgroundColor = UIColor.clearColor()
+            cell.distance.layer.masksToBounds = true
+        //cell.distance.layer.cornerRadius = 9
         cell.distance.text = route.totalDistance
+        cell.distance.layer.cornerRadius = 4
+        cell.distance.backgroundColor = UIColor(red: UIColor.getValue(29.0), green: UIColor.getValue(53.0), blue: UIColor.getValue(87.0), alpha: 0.3)
+        cell.map.layer.masksToBounds = true
+        cell.map.layer.cornerRadius = 5
+        cell.map.addSubview(cell.mapview)
         
-        
+
+    
         // Configure the cell...
         
         return cell
