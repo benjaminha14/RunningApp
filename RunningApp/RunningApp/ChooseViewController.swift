@@ -9,8 +9,10 @@
 import UIKit
 import GoogleMaps
 import MapKit
+import PermissionScope
 class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestureRecognizerDelegate, GMSMapViewDelegate, ChoosePopViewDelegate, UITabBarControllerDelegate {
     @IBOutlet weak var chooseDistanceButton: UIBarButtonItem!
+    let pscope = PermissionScope()
     var distanceTravel:Double = 0
     var minDistance:Double = 0
     var storyBoard:UIStoryboard!
@@ -42,6 +44,25 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = true
         self.tabBarController?.delegate = self
+        pscope.addPermission(LocationAlwaysPermission(), message: "We need our location to create unique running routes for you and also provide directions for them")
+        pscope.show({ finished, results in
+            print("got results \(results)")
+            }, cancelled: { (results) -> Void in
+                print("thing was cancelled")
+                self.pscope.requestLocationAlways()
+        })
+        
+//        pscope.onCancel = { results in
+//            self.pscope.addPermission(LocationAlwaysPermission(), message: "We need our location to create unique running routes for you and also provide directions for them")
+//
+//        }
+//        pscope.onDisabledOrDenied = { results in
+//            self.pscope.addPermission(LocationAlwaysPermission(), message: "We need our location to create unique running routes for you and also provide directions for them")
+//
+//            
+//            
+//        }
+//        
         getUsersLocationSetup()
         
         

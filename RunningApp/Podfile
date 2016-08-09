@@ -15,6 +15,7 @@ target 'RunningApp' do
   pod 'RandomColorSwift'
   pod "GMStepper"
   pod 'Kanna', '~> 1.1.0'
+  pod 'PermissionScope'
   target 'RunningAppTests' do
     inherit! :search_paths
     # Pods for testing

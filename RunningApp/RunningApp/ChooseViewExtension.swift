@@ -22,6 +22,31 @@ extension ChooseViewController{
         
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status {
+        case .NotDetermined:
+            // If status has not yet been determied, ask for authorization
+            manager.requestWhenInUseAuthorization()
+            break
+        case .AuthorizedWhenInUse:
+            // If authorized when in use
+            manager.startUpdatingLocation()
+            break
+        case .AuthorizedAlways:
+            // If always authorized
+            manager.startUpdatingLocation()
+            break
+        case .Restricted:
+            // If restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .Denied:
+            // If user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        default:
+            break
+        }
+    }
+    
 
     func getUsersLocationSetup(){
         self.locationManager.requestAlwaysAuthorization()
