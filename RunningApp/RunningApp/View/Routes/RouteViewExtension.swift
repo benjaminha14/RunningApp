@@ -60,21 +60,19 @@ extension RouteTableViewController {
         
     }
     
-    
+
     func refreshRoutes(){
         
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
-    
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier ==  "toMapView" {
             let navVC = segue.destinationViewController as! UINavigationController
             let mapVC = navVC.viewControllers.first as! MapViewController
             mapVC.route = chosenRoute
-            
-            
         }
     }
     
@@ -141,9 +139,15 @@ extension RouteTableViewController {
         frame.size.width = cell.map.frame.size.width
         frame.size.height = cell.map.frame.size.height
         cell.mapview = GMSMapView.mapWithFrame(frame, camera: camera)
-        
+        cell.route = route
         cell.mapview.delegate = self
         cell.mapview.myLocationEnabled = true
+        cell.mapview.settings.allowScrollGesturesDuringRotateOrZoom = true
+        cell.mapview.settings.zoomGestures = false
+        cell.mapview.settings.scrollGestures = false
+        
+        
+        
         let path:GMSPath = GMSPath(fromEncodedPath: route.overViewPath)!
         let route2 = GMSPolyline(path: path)
         route2.map = cell.mapview
@@ -155,12 +159,13 @@ extension RouteTableViewController {
         cell.distance.backgroundColor = UIColor(red: UIColor.getValue(29.0), green: UIColor.getValue(53.0), blue: UIColor.getValue(87.0), alpha: 0.3)
         cell.map.layer.masksToBounds = true
         cell.map.layer.cornerRadius = 5
+        cell.map.layer.shadowRadius = 1
+        cell.map.layer.shadowColor = UIColor.blackColor().CGColor
         cell.map.addSubview(cell.mapview)
+
         
 
     
-        // Configure the cell...
-        
         return cell
     }
     

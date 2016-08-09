@@ -16,24 +16,26 @@
         <scene sceneID="iMF-XE-MJx">
             <objects>
                 <tableViewController id="fQL-Mu-i65" customClass="RouteTableViewController" customModule="RunningApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="217" sectionHeaderHeight="28" sectionFooterHeight="28" id="JV6-mD-HSd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="199" sectionHeaderHeight="28" sectionFooterHeight="28" id="JV6-mD-HSd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RouteCell" rowHeight="217" id="ePs-r3-Oca" customClass="RouteCell" customModule="RunningApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="217"/>
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="RouteCell" rowHeight="199" id="ePs-r3-Oca" customClass="RouteCell" customModule="RunningApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="199"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ePs-r3-Oca" id="fNv-y4-s38">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="216.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="198.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psm-hi-Or6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="216.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="198.5"/>
                                             <color key="backgroundColor" red="0.81960784310000001" green="0.20392156859999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5 miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyf-Bm-dR0">
-                                            <rect key="frame" x="272" y="98" width="54.5" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyf-Bm-dR0">
+                                            <rect key="frame" x="524" y="162" width="60" height="21"/>
                                             <color key="backgroundColor" red="0.30980392156862746" green="0.38823529411764707" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="tintColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -44,14 +46,25 @@
                                             <color key="textColor" red="1" green="1" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbc-HI-sR3">
+                                            <rect key="frame" x="0.0" y="0.5" width="600" height="198.5"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="goToOverview:" destination="ePs-r3-Oca" eventType="touchUpInside" id="w4v-6X-t7b"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="psm-hi-Or6" firstAttribute="centerX" secondItem="fNv-y4-s38" secondAttribute="centerX" id="9ia-le-Stv"/>
+                                        <constraint firstItem="Gbc-HI-sR3" firstAttribute="centerY" secondItem="fNv-y4-s38" secondAttribute="centerY" id="AQV-5V-POC"/>
+                                        <constraint firstItem="Gbc-HI-sR3" firstAttribute="height" secondItem="fNv-y4-s38" secondAttribute="height" id="DUe-2I-12d"/>
                                         <constraint firstAttribute="bottom" secondItem="cyf-Bm-dR0" secondAttribute="bottom" constant="16" id="GVm-Ln-yYq"/>
                                         <constraint firstAttribute="trailing" secondItem="cyf-Bm-dR0" secondAttribute="trailing" constant="16" id="Jir-Gc-BRt"/>
                                         <constraint firstItem="psm-hi-Or6" firstAttribute="width" secondItem="fNv-y4-s38" secondAttribute="width" id="Vwg-7r-gzu"/>
+                                        <constraint firstItem="Gbc-HI-sR3" firstAttribute="width" secondItem="fNv-y4-s38" secondAttribute="width" id="Wu5-EE-Gxo"/>
                                         <constraint firstItem="psm-hi-Or6" firstAttribute="height" secondItem="fNv-y4-s38" secondAttribute="height" id="Yi7-bu-cvp"/>
                                         <constraint firstItem="psm-hi-Or6" firstAttribute="centerY" secondItem="fNv-y4-s38" secondAttribute="centerY" id="YkS-47-keP"/>
+                                        <constraint firstItem="Gbc-HI-sR3" firstAttribute="centerX" secondItem="fNv-y4-s38" secondAttribute="centerX" id="z4B-4b-GsE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
