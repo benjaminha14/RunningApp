@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import MapKit
 import GoogleMaps
-class RouteTableViewController: UITableViewController, CLLocationManagerDelegate, RouteGeneratorDelegate,GMSMapViewDelegate {
+class RouteTableViewController: UITableViewController, CLLocationManagerDelegate, RouteGeneratorDelegate,GMSMapViewDelegate, RouteCellDelegate {
     var numberOfRoutesGenerated = 0{
         didSet{
             if(routes.count < 3) {

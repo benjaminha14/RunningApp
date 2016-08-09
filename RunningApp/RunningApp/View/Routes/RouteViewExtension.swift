@@ -162,6 +162,9 @@ extension RouteTableViewController {
         cell.map.layer.shadowRadius = 1
         cell.map.layer.shadowColor = UIColor.blackColor().CGColor
         cell.map.addSubview(cell.mapview)
+        
+        cell.delegate = self
+        
 
         
 
@@ -169,7 +172,11 @@ extension RouteTableViewController {
         return cell
     }
     
-    
+    func retreiveChosenRoute(route: Route) {
+        chosenRoute = route
+        performSegueWithIdentifier("toMapView", sender: self)
+    }
+   
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         chosenRoute = routes[indexPath.row]
         performSegueWithIdentifier("toMapView", sender: self)

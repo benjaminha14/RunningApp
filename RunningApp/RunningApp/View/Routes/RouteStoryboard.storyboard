@@ -50,7 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.5" width="600" height="198.5"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="goToOverview:" destination="ePs-r3-Oca" eventType="touchUpInside" id="w4v-6X-t7b"/>
+                                                <action selector="goToOverview:" destination="ePs-r3-Oca" eventType="touchUpInside" id="eZV-Kn-6hf"/>
                                             </connections>
                                         </button>
                                     </subviews>

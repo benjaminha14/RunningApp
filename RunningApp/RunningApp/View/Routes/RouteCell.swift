@@ -8,6 +8,10 @@
 
 import UIKit
 import GoogleMaps
+protocol RouteCellDelegate {
+    func retreiveChosenRoute(route: Route) -> Void
+}
+
 class RouteCell: UITableViewCell,CLLocationManagerDelegate {
 
 
@@ -15,12 +19,16 @@ class RouteCell: UITableViewCell,CLLocationManagerDelegate {
     @IBOutlet weak var keyLocations: UILabel!
     var route:Route!
     @IBOutlet weak var map: UIView!
-   
+    var delegate: RouteCellDelegate?
     var mapview:GMSMapView!
     
     @IBAction func goToOverview(sender: AnyObject) {
         print(route)
+        self.delegate!.retreiveChosenRoute(route)
+    
+        
     }
+    
     override var frame: CGRect {
         get{
             return super.frame
