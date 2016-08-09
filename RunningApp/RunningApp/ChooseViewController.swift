@@ -20,6 +20,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
     var route:Route!
     var finalDestination:CLLocation!
     var destinationNotChosen = true
+    var userFirstTime = true
     @IBOutlet weak var mapView: GMSMapView!
     var bump = true
     
@@ -34,11 +35,41 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         
         if let finalDestination = finalDestination{
             performSegueWithIdentifier("goToRoute", sender: self)
+        }else{
+            let alertController = UIAlertController(title: "No Final Destination", message: "Missing a final destination. Hold down to create a final destination!", preferredStyle: .Alert)
+            
+            
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                
+            }
+            alertController.addAction(OKAction)
+            
+            self.presentViewController(alertController, animated: true) {
+                
+            }
         }
     }
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let userFirst = NSUserDefaults.standardUserDefaults().valueForKey("userFirstTime"){
+            userFirstTime = userFirst as! Bool
+        }
+        if userFirstTime {
+            let alertController = UIAlertController(title: "Tip", message: "Hold down to set a final Destination. Hold and drag the marker to change the destination. ", preferredStyle: .Alert)
+            
+            
+            let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+               NSUserDefaults.standardUserDefaults().setBool(false, forKey: "userFirstTime")
+            }
+            alertController.addAction(OKAction)
+            
+            self.presentViewController(alertController, animated: true) {
+                
+            }
+        }
+        
+        
         mapView.myLocationEnabled = true
         mapView.delegate = self
         mapView.settings.myLocationButton = true
@@ -52,17 +83,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
                 self.pscope.requestLocationAlways()
         })
         
-//        pscope.onCancel = { results in
-//            self.pscope.addPermission(LocationAlwaysPermission(), message: "We need our location to create unique running routes for you and also provide directions for them")
-//
-//        }
-//        pscope.onDisabledOrDenied = { results in
-//            self.pscope.addPermission(LocationAlwaysPermission(), message: "We need our location to create unique running routes for you and also provide directions for them")
-//
-//            
-//            
-//        }
-//        
+        
         getUsersLocationSetup()
         
         
@@ -86,8 +107,19 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
     
     func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
         print(coordinate)
+        pscope.show(
+            { finished, results in
+                print("got results \(results)")
+                self.handleLongPress(coordinate)
+                
+            },
+            cancelled: { results in
+                print("thing was cancelled")
+            }
+        )
         
-        handleLongPress(coordinate)
+        
+        
     }
     
     func mapView(mapView: GMSMapView, didEndDraggingMarker marker: GMSMarker) {
@@ -123,7 +155,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
         minDistance = distance
         distanceTravel = minDistance
         chooseDistanceButton.title = "\(distanceTravel) miles"
-
+        
     }
     //MARK: PopViewDelegate
     func minDistanceForPopup(view: ChoosePopViewController) -> Double {
@@ -133,7 +165,7 @@ class ChooseViewController: UIViewController ,CLLocationManagerDelegate, UIGestu
     func didSelectDistance(view: ChoosePopViewController, distance: Double) {
         distanceTravel = distance
         chooseDistanceButton.title = "\(distanceTravel) miles"
-
+        
         
     }
     
