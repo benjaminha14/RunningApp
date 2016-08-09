@@ -21,6 +21,7 @@ class NavigationViewController: UIViewController,CLLocationManagerDelegate,UITab
     let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor(red: UIColor.getValue(238), green: UIColor.getValue(238), blue: UIColor.getValue(238), alpha: 1.0)
         mapView.myLocationEnabled = true
         getUsersLocationSetup()
         

@@ -20,6 +20,7 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
             }else{
                 generating = false
                 tableView.reloadData()
+                removeLoadingScreen()
             
             }
             
@@ -48,6 +49,11 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoadingScreen()
+        self.tableView.backgroundColor = UIColor(red: UIColor.getValue(238), green: UIColor.getValue(238), blue: UIColor.getValue(238), alpha: 1.0)
+        
+
+        
     
 
         
@@ -70,5 +76,51 @@ class RouteTableViewController: UITableViewController, CLLocationManagerDelegate
     
     @IBAction func unwindToRoutes(segue: UIStoryboardSegue) {}
     
+    
+    
+    
+    let loadingView = UIView()
+    
+    /// Spinner shown during load the TableView
+    let spinner = UIActivityIndicatorView()
+    
+    /// Text shown during load the TableView
+    let loadingLabel = UILabel()
+    
+    func setLoadingScreen() {
+        
+        // Sets the view which contains the loading text and the spinner
+        let width: CGFloat = 120
+        let height: CGFloat = 30
+        let x = (self.tableView.frame.width / 2) - (width / 2)
+        let y = (self.tableView.frame.height / 2) - (height / 2) - (self.navigationController?.navigationBar.frame.height)!
+        loadingView.frame = CGRectMake(x, y, width, height)
+        
+        // Sets loading text
+        self.loadingLabel.textColor = UIColor.grayColor()
+        self.loadingLabel.textAlignment = NSTextAlignment.Center
+        self.loadingLabel.text = "Loading..."
+        self.loadingLabel.frame = CGRectMake(0, 0, 140, 30)
+        
+        // Sets spinner
+        self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        self.spinner.frame = CGRectMake(0, 0, 30, 30)
+        self.spinner.startAnimating()
+        // Adds text and spinner to the view
+        loadingView.addSubview(self.spinner)
+        loadingView.addSubview(self.loadingLabel)
+        
+        self.tableView.addSubview(loadingView)
+        
+    }
+    
+    // Remove the activity indicator from the main view
+    func removeLoadingScreen() {
+        
+        // Hides and stops the text and the spinner
+        self.spinner.stopAnimating()
+        self.loadingLabel.hidden = true
+        
+    }
     
 }

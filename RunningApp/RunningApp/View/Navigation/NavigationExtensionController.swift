@@ -70,7 +70,9 @@ extension NavigationViewController{
         cell.directions.text = route.allDirections[indexPath.row].direction.html2String
         cell.number.text = "\(indexPath.row)"
         cell.number.textColor = color
-        
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor(red: UIColor.getValue(214), green: UIColor.getValue(213), blue: UIColor.getValue(215), alpha: 1.0).CGColor
+        cell.layer.borderWidth = 1
         
         
         return cell

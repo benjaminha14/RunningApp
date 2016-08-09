@@ -159,11 +159,14 @@ extension RouteTableViewController {
         cell.distance.backgroundColor = UIColor(red: UIColor.getValue(29.0), green: UIColor.getValue(53.0), blue: UIColor.getValue(87.0), alpha: 0.3)
         cell.map.layer.masksToBounds = true
         cell.map.layer.cornerRadius = 5
-        cell.map.layer.shadowRadius = 1
-        cell.map.layer.shadowColor = UIColor.blackColor().CGColor
         cell.map.addSubview(cell.mapview)
         
         cell.delegate = self
+        
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 5
+        cell.layer.borderColor = UIColor(red: UIColor.getValue(214), green: UIColor.getValue(213), blue: UIColor.getValue(215), alpha: 1.0).CGColor
+        cell.layer.borderWidth = 1
         
 
         
