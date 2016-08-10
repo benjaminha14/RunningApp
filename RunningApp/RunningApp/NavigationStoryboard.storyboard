@@ -44,7 +44,7 @@
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NavigationCell" rowHeight="99" id="hUi-s9-XZn" customClass="NavigationCustomCell" customModule="RunningApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="99"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUi-s9-XZn" id="IBt-Wb-7Sg">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="98.5"/>

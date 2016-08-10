@@ -14,12 +14,6 @@ extension NavigationViewController{
             print("Camera view ")
             
 
-            let marker = GMSMarker()
-            
-            marker.position =  CLLocationCoordinate2D(latitude:location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
-            marker.title = "Your location"
-            marker.map = self.mapView
             mapView.settings.myLocationButton = true
             mapView.settings.compassButton = true
             

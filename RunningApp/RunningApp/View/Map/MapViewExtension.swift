@@ -19,14 +19,8 @@ extension MapViewController{
         if bump {
             bump = false
             self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 13, bearing: 0, viewingAngle: 0)
+
             
-            
-            let marker = GMSMarker()
-            
-            marker.position =  CLLocationCoordinate2D(latitude:location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
-            marker.title = "Destination "
-            marker.map = self.mapView
             mapView.settings.myLocationButton = true
             mapView.settings.compassButton = true
             let routeGenerator = RouteGenerator()
